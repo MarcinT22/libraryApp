@@ -3,7 +3,7 @@ export const categories = [
     id: 1,
     imgUrl:
       "https://static.profinfo.pl/storage/image/core_products/2021/8/20/fb97a952630eab4e767e6a5e2818fc66/admin/shop/15159101252KS_HD.jpg.webp",
-    title: "Kriminał",
+    title: "Kryminał",
   },
   {
     id: 2,

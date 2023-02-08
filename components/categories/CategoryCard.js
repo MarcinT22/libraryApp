@@ -5,13 +5,13 @@ export default function CategoryCard({ data }) {
   return (
     <TouchableOpacity className="mr-4 w-28">
       <Image
-        className="h-32 w-28 rounded-xl"
+        className="h-32 w-full rounded-xl"
         source={{
           uri: data.imgUrl,
         }}
         resizeMode="cover"
       />
-      <Text className="text-white font-[Poppins-Bold] text-base mt-2 leading-5">
+      <Text className="text-white font-[Poppins-Bold] text-sm mt-2 leading-4">
         {data.title}
       </Text>
     </TouchableOpacity>

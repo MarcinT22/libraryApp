@@ -5,7 +5,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { useFonts } from "expo-font";
 import { useCallback } from "react";
-import HomeScreen from "./screens/HomeScreen";
+
+import BottomTabsNavigator from "./navigations/BottomTabsNavigator";
 
 const Stack = createNativeStackNavigator();
 
@@ -37,7 +38,7 @@ export default function App() {
             animation: "fade",
           }}
         >
-          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="TabNavigation" component={BottomTabsNavigator} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>

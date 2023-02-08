@@ -11,10 +11,13 @@ import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import CategoriesList from "../components/categories/CategoriesList";
 import { categories } from "../data/categories";
 import { books } from "../data/books";
-import NewBookCard from "../components/books/NewBookCard";
+
+import { useNavigation } from "@react-navigation/native";
+import BookCard from "../components/books/BookCard";
 
 const HomeScreen = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const navigation = useNavigation();
 
   useEffect(() => {
     setTimeout(() => {
@@ -23,7 +26,7 @@ const HomeScreen = () => {
   }, []);
 
   return (
-    <View className="flex-1 bg-white">
+    <View className="flex-1 bg-[#343434]">
       {!isLoading ? (
         <View>
           <ScrollView stickyHeaderIndices={[0]}>
@@ -46,14 +49,14 @@ const HomeScreen = () => {
                 <CategoriesList data={categories} />
               </View>
             </View>
-            <View className="flex-1  bg-white rounded-t-[15px] mt-[-10px] relative z-10 p-5">
+            <View className="flex-1 pb-10  bg-white rounded-t-[15px] mt-[-10px] relative z-10 p-5">
               <Text className="text-xl font-[Poppins-Bold] mb-3">Nowości</Text>
 
-              {books.map((book, key) => {
-                return <NewBookCard key={key} data={book} />;
-              })}
-
-              <NewBookCard />
+              <View className="pb-4">
+                {books.slice(0, 3).map((book) => {
+                  return <BookCard data={book} key={book.id} news={true} />;
+                })}
+              </View>
             </View>
           </ScrollView>
         </View>
