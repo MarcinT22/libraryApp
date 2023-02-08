@@ -1,9 +1,14 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 
 export default function BookCard({ data, news }) {
+  const navigation = useNavigation();
   return (
-    <TouchableOpacity className="flex-row flex-wrap border-b border-[#ECECEC] pb-4 mb-4">
+    <TouchableOpacity
+      onPress={() => navigation.navigate("BookScreen", { data })}
+      className="flex-row flex-wrap border-b border-[#ECECEC] pb-4 mb-4"
+    >
       <View className="w-1/3 ">
         <Image
           className="w-full h-24 rounded-xl"

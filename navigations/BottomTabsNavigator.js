@@ -12,6 +12,7 @@ const BottomTabsNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={{
+        unmountOnBlur: true,
         tabBarHideOnKeyboard: true,
         tabBarInactiveTintColor: "#444",
         tabBarActiveTintColor: "#F15E3B",
@@ -28,7 +29,7 @@ const BottomTabsNavigator = () => {
         headerShown: false,
 
         tabBarLabelStyle: {
-          fontSize: 12,
+          fontSize: 10,
           fontFamily: "Poppins-Regular",
           marginTop: 0,
           color: "#8C8C8C",
@@ -43,7 +44,7 @@ const BottomTabsNavigator = () => {
             <MaterialCommunityIcons
               name="home-outline"
               color={color}
-              size={32}
+              size={25}
             />
           ),
         }}

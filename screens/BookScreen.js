@@ -1,0 +1,78 @@
+import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
+import React from "react";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+
+const BookScreen = () => {
+  const navigation = useNavigation();
+
+  const {
+    params: { data },
+  } = useRoute();
+
+  return (
+    <View className="flex-1 bg-[#343434]">
+      <View className="relative z-0 px-5 ">
+        <View className="flex-row items-center justify-center">
+          <TouchableOpacity
+            className="absolute left-0"
+            onPress={() => navigation.goBack()}
+          >
+            <MaterialCommunityIcons name="arrow-left" color="#fff" size={30} />
+          </TouchableOpacity>
+          <Text className="color-white text-lg font-[Poppins-Bold] my-4 text-center">
+            Szczegóły książki
+          </Text>
+        </View>
+      </View>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        // stickyHeaderIndices={[0]}
+      >
+        <View className="flex-1  bg-white  rounded-t-[15px] mt-[90px] relative z-10 p-5 pb-0">
+          <View className="flex-row items-center pb-3">
+            <View className=" mt-[-110px] rounded-[15px] ">
+              <Image
+                source={{ uri: data.imgUrl }}
+                className="w-40 h-60 rounded-[15px]"
+                resizeMode="contain"
+              />
+            </View>
+            <View className="ml-3  w-1/2">
+              <Text className="text-[#8C8C8C] text-xs font-[Poppins-Regular] mb-1">
+                {data.category}
+              </Text>
+              <Text className="text-[#8C8C8C] text-xs font-[Poppins-Regular] mb-1">
+                Wydawnictwo: Znak
+              </Text>
+              <Text className="text-[#8C8C8C] text-xs font-[Poppins-Regular] mb-1">
+                Data premiery: 23.03.2001
+              </Text>
+              <Text className="text-[#8C8C8C] text-xs font-[Poppins-Regular] mb-1">
+                Liczba stron: 546
+              </Text>
+            </View>
+          </View>
+          <Text className="font-[Poppins-SemiBold] text-xl">{data.title}</Text>
+          <Text className="font-[Poppins-Regular] text-base text-[#8C8C8C]">
+            {data.author}
+          </Text>
+          <View className="mt-4 ">
+            <Text className="font-[Poppins-Regular] text-base text-black leading-7">
+              {data.description}
+            </Text>
+          </View>
+        </View>
+      </ScrollView>
+      <View className="bg-white px-5 pb-4 pt-4">
+        <TouchableOpacity className="py-3 bg-[#F15E3B] rounded-[10px] ">
+          <Text className="text-center text-white font-[Poppins-Bold] text-xl uppercase ">
+            Wypożyczam
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
+
+export default BookScreen;

@@ -29,14 +29,17 @@ const HomeScreen = () => {
     <View className="flex-1 bg-[#343434]">
       {!isLoading ? (
         <View>
-          <ScrollView stickyHeaderIndices={[0]}>
-            <View className="h-[320px] bg-[#343434] relative z-0">
+          <ScrollView
+            stickyHeaderIndices={[0]}
+            showsVerticalScrollIndicator={false}
+          >
+            <View className="  relative z-0">
               <View className="p-5 pb-0">
                 <TouchableOpacity
                   className="flex-row items-center bg-[#292929] h-12 rounded-[15px] px-4"
                   onPress={() => alert("test")}
                 >
-                  <MaterialIcons name="search" size={22} color="#fff" />
+                  <MaterialIcons name="search" size={28} color="#fff" />
                   <Text className="text-sm color-white font-[Poppins-Regular] ml-4">
                     Wyszukaj książkę
                   </Text>
@@ -49,7 +52,7 @@ const HomeScreen = () => {
                 <CategoriesList data={categories} />
               </View>
             </View>
-            <View className="flex-1 pb-10  bg-white rounded-t-[15px] mt-[-10px] relative z-10 p-5">
+            <View className="flex-1 pb-10  bg-white rounded-t-[15px] relative mt-2 z-10 p-5">
               <Text className="text-xl font-[Poppins-Bold] mb-3">Nowości</Text>
 
               <View className="pb-4">

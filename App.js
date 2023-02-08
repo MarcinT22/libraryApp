@@ -7,6 +7,7 @@ import { useFonts } from "expo-font";
 import { useCallback } from "react";
 
 import BottomTabsNavigator from "./navigations/BottomTabsNavigator";
+import BookScreen from "./screens/BookScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -29,16 +30,17 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView className="flex-1 ">
+    <SafeAreaView className="flex-1 bg-[#343434]">
       <StatusBar style="light" backgroundColor="#343434" translucent={false} />
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
             headerShown: false,
-            animation: "fade",
+            animation: "flip",
           }}
         >
           <Stack.Screen name="TabNavigation" component={BottomTabsNavigator} />
+          <Stack.Screen name="BookScreen" component={BookScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>

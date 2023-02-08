@@ -6,6 +6,8 @@ export const books = [
     title: "Harry Potter i Zakon Feniksa",
     author: "J.K. Rowling",
     category: "Fantastyka",
+    description:
+      "Harry znów spędza nudne, samotne wakacje w domu Dursleyów. Czeka go piąty rok nauki w Hogwarcie i chciałby jak najszybciej spotkać się ze swoimi najlepszymi przyjaciółmi, Ronem i Hermioną. Ci jednak wyraźnie go zaniedbują. Gdy Harry ma już dość wszystkiego i postanawia zmienić swoją nieznośną sytuację, sprawy przyjmują całkiem nieoczekiwany obrót. Wygląda na to, że nowy rok nauki w Hogwarcie będzie bardzo dramatyczny. Po raz pierwszy w życiu Harry poczuje się tam nie jak w domu, tylko… więzieniu, i to nie za sprawą przywróconego do życia Lorda Voldemorta.",
   },
   {
     id: 2,
@@ -34,5 +36,21 @@ export const books = [
     title: "Zaproszenie",
     author: "Keeland Vi",
     category: "Romans",
+  },
+  {
+    id: 6,
+    imgUrl:
+      "https://ecsmedia.pl/c/lowcy-skor-tajemnice-zbrodni-w-lodzkim-pogotowiu-w-iext124142121.jpg",
+    title: "Łowcy skór. Tajemnice zbrodni w łódzkim pogotowiu",
+    author: "Tomasz Patora",
+    category: "Literatura faktu",
+  },
+  {
+    id: 7,
+    imgUrl:
+      "https://ecsmedia.pl/c/ostatnie-zyczenie-wiedzmin-tom-1-w-iext121324546.jpg",
+    title: "Ostatnie życzenie. Wiedźmin. Tom 1",
+    author: "Andrzej Sapkowski",
+    category: "Fantastyka",
   },
 ];
