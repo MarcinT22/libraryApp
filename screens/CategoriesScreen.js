@@ -12,7 +12,7 @@ const CategoriesScreen = ({ navigation }) => {
   } = useRoute();
 
   return (
-    <View className="flex-1 bg-[#ffffff]">
+    <View className="flex-1 bg-[#343434]">
       <View className="relative z-0 px-5 bg-[#343434] pb-5">
         <View className="flex-row items-center justify-center">
           <TouchableOpacity
@@ -26,8 +26,12 @@ const CategoriesScreen = ({ navigation }) => {
           </Text>
         </View>
       </View>
-      <ScrollView showsVerticalScrollIndicator={false} className="mt-[-15px]">
-        <View className="flex-1  bg-white  rounded-t-[15px]  relative z-10 p-5 pb-0 ">
+
+      <View className="flex-1 mt-[-15px]">
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          className="flex-1  bg-white  rounded-t-[15px]  relative z-10 p-5 pb-0"
+        >
           <View className="flex-row flex-wrap justify-center ">
             {categories.map((category) => {
               return (
@@ -41,8 +45,8 @@ const CategoriesScreen = ({ navigation }) => {
               );
             })}
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     </View>
   );
 };

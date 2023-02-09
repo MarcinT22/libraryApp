@@ -25,7 +25,7 @@ const BookListByCategory = ({ navigation }) => {
             <MaterialCommunityIcons name="arrow-left" color="#fff" size={30} />
           </TouchableOpacity>
           <Text className="color-white text-lg font-[Poppins-Bold] my-4 text-center">
-            {data.title} ss
+            {data.title}
           </Text>
         </View>
       </View>
@@ -44,16 +44,18 @@ const BookListByCategory = ({ navigation }) => {
               className="text-sm font-[Poppins-Regular] pt-1 pl-4  mr-2 w-4/5 "
             />
           </View>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("CategoriesScreen", { data })}
-          >
-            <Text
-              className="text-sm uppercase font-[Poppins-Bold] 
-             text-[#F15E3B]"
+          <View className="border-b border-[#ECECEC] pb-2">
+            <TouchableOpacity
+              onPress={() => navigation.navigate("CategoriesScreen", { data })}
             >
-              Kategorie
-            </Text>
-          </TouchableOpacity>
+              <Text
+                className="text-sm uppercase font-[Poppins-Bold] 
+             text-[#F15E3B]"
+              >
+                Kategorie
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </ScrollView>
     </View>

@@ -11,8 +11,8 @@ const BooksNavigator = () => {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
+        animation: "none",
       }}
-      screen
     >
       <Stack.Screen name="BookList" component={BookListScreen} />
       <Stack.Screen name="BookListByCategory" component={BookListByCategory} />
