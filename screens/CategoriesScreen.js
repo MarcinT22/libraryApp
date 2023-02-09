@@ -32,10 +32,10 @@ const CategoriesScreen = ({ navigation }) => {
           showsVerticalScrollIndicator={false}
           className="flex-1  bg-white  rounded-t-[15px]  relative z-10 p-5 pb-0"
         >
-          <View className="flex-row flex-wrap justify-center ">
+          <View className="flex-row flex-wrap  ">
             {categories.map((category) => {
               return (
-                <View className="mb-4 mx-2" key={category.id}>
+                <View className="mb-4 px-2 w-1/3" key={category.id}>
                   <CategoryCard
                     data={category}
                     light={true}

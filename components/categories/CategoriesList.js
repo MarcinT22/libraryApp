@@ -10,7 +10,7 @@ export default function CategoriesList({ data }) {
       horizontal
       data={data}
       renderItem={({ item }) => (
-        <View className="mr-4">
+        <View className="mr-4 w-28">
           <CategoryCard data={item} />
         </View>
       )}

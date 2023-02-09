@@ -7,7 +7,6 @@ export default function CategoryCard({ data, light, active }) {
 
   return (
     <TouchableOpacity
-      className=" w-28"
       onPress={() =>
         navigation.navigate("Books", {
           screen: "BookListByCategory",
