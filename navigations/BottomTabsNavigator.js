@@ -1,37 +1,39 @@
-import { View, Text } from "react-native";
 import React from "react";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import HomeScreen from "../screens/HomeScreen";
-import BookListScreen from "../screens/BookListScreen";
+
+import BooksNavigator from "./BooksNavigator";
 
 const Tab = createBottomTabNavigator();
 
 const BottomTabsNavigator = () => {
   return (
     <Tab.Navigator
+      initialRouteName="Home"
       screenOptions={{
         unmountOnBlur: true,
         tabBarHideOnKeyboard: true,
         tabBarInactiveTintColor: "#444",
         tabBarActiveTintColor: "#F15E3B",
         tabBarStyle: {
-          height: 50,
           elevation: 0,
           backgroundColor: "#EAEAEA",
-          borderRadius: 15,
+          borderTopLeftRadius: 15,
+          borderTopRightRadius: 15,
           position: "absolute",
-          left: 10,
-          right: 10,
-          bottom: 10,
+          // left: 10,
+          // right: 10,
+          // bottom: 0,
         },
         headerShown: false,
 
         tabBarLabelStyle: {
           fontSize: 10,
           fontFamily: "Poppins-Regular",
-          marginTop: 0,
+          marginTop: -8,
+          marginBottom: 3,
           color: "#8C8C8C",
         },
       }}
@@ -44,14 +46,14 @@ const BottomTabsNavigator = () => {
             <MaterialCommunityIcons
               name="home-outline"
               color={color}
-              size={25}
+              size={30}
             />
           ),
         }}
       />
       <Tab.Screen
-        name="BookList"
-        component={BookListScreen}
+        name="Books"
+        component={BooksNavigator}
         options={{
           title: "Książki",
           tabBarIcon: ({ color, size }) => (

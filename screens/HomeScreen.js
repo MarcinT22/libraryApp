@@ -55,7 +55,7 @@ const HomeScreen = () => {
             <View className="flex-1 pb-10  bg-white rounded-t-[15px] relative mt-2 z-10 p-5">
               <Text className="text-xl font-[Poppins-Bold] mb-3">Nowości</Text>
 
-              <View className="pb-4">
+              <View className="pb-2">
                 {books.slice(0, 3).map((book) => {
                   return <BookCard data={book} key={book.id} news={true} />;
                 })}

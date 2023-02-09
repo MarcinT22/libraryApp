@@ -8,6 +8,7 @@ import { useCallback } from "react";
 
 import BottomTabsNavigator from "./navigations/BottomTabsNavigator";
 import BookScreen from "./screens/BookScreen";
+import CategoriesScreen from "./screens/CategoriesScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -38,9 +39,11 @@ export default function App() {
             headerShown: false,
             animation: "flip",
           }}
+          initialRouteName="TabNavigator"
         >
-          <Stack.Screen name="TabNavigation" component={BottomTabsNavigator} />
+          <Stack.Screen name="TabNavigator" component={BottomTabsNavigator} />
           <Stack.Screen name="BookScreen" component={BookScreen} />
+          <Stack.Screen name="CategoriesScreen" component={CategoriesScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>

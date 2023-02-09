@@ -22,7 +22,7 @@ const BookListScreen = () => {
           </View>
         </View>
         <View className="flex-1 pb-10 bg-white rounded-t-[15px] mt-2 relative z-10 p-5">
-          <View className="bg-[#E8E6E6]  rounded-[15px] flex-row items-center justify-center  h-12 mb-6 ">
+          <View className="bg-[#eaeaea]  rounded-[15px] flex-row items-center justify-center  h-12 mb-6 ">
             <MaterialIcons name="search" size={28} color="#8C8C8C" />
             <TextInput
               placeholder="Wyszukaj książkę"

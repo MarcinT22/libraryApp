@@ -29,9 +29,22 @@ const BookScreen = () => {
         showsVerticalScrollIndicator={false}
         // stickyHeaderIndices={[0]}
       >
-        <View className="flex-1  bg-white  rounded-t-[15px] mt-[90px] relative z-10 p-5 pb-0">
+        <View className="flex-1  bg-white  rounded-t-[15px] mt-[90px] relative z-10 p-5 pb-0 min-h-screen">
           <View className="flex-row items-center pb-3">
-            <View className=" mt-[-110px] rounded-[15px] ">
+            <View
+              className=" mt-[-110px] rounded-[15px] "
+              style={{
+                shadowColor: "#000",
+                shadowOffset: {
+                  width: 0,
+                  height: 2,
+                },
+                shadowOpacity: 0.25,
+                shadowRadius: 3.84,
+
+                elevation: 5,
+              }}
+            >
               <Image
                 source={{ uri: data.imgUrl }}
                 className="w-40 h-60 rounded-[15px]"
@@ -53,12 +66,12 @@ const BookScreen = () => {
               </Text>
             </View>
           </View>
-          <Text className="font-[Poppins-SemiBold] text-xl">{data.title}</Text>
+          <Text className="font-[Poppins-SemiBold] text-lg">{data.title}</Text>
           <Text className="font-[Poppins-Regular] text-base text-[#8C8C8C]">
             {data.author}
           </Text>
           <View className="mt-4 ">
-            <Text className="font-[Poppins-Regular] text-base text-black leading-7">
+            <Text className="font-[Poppins-Regular] text-sm text-black leading-6">
               {data.description}
             </Text>
           </View>
