@@ -27,9 +27,11 @@ const BookScreen = () => {
       </View>
       <ScrollView
         showsVerticalScrollIndicator={false}
-        // stickyHeaderIndices={[0]}
+        className="flex-1  bg-white "
+        stickyHeaderIndices={[0]}
       >
-        <View className="flex-1  bg-white  rounded-t-[15px] mt-[90px] relative z-10 p-5 pb-0 min-h-screen">
+        <View className="bg-[#343434] h-[140px]"></View>
+        <View className="rounded-t-[15px] mt-[-50px] relative z-10 p-5 pb-0 bg-white">
           <View className="flex-row items-center pb-3">
             <View
               className=" mt-[-110px] rounded-[15px] "

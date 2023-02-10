@@ -8,11 +8,7 @@ export default function CategoryCard({ data, light, active }) {
   return (
     <TouchableOpacity
       onPress={() =>
-        navigation.navigate("Books", {
-          screen: "BookListByCategory",
-          params: { data: data },
-          initial: false,
-        })
+        navigation.navigate("BookListByCategoryScreen", { data: data })
       }
     >
       <Image

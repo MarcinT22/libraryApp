@@ -9,13 +9,19 @@ import React, { useEffect } from "react";
 import { useRoute } from "@react-navigation/native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-const BookListByCategory = ({ navigation }) => {
+import { books } from "../data/books";
+import BookCard from "../components/books/BookCard";
+import Lottie from "lottie-react-native";
+import SearchButton from "../components/SearchButton";
+const BookListByCategoryScreen = ({ navigation }) => {
   const {
     params: { data },
   } = useRoute();
 
+  const booksByCategory = books.filter((item) => item.category == data.title);
+
   return (
-    <View className="flex-1 bg-[#fff]">
+    <View className="flex-1 bg-[#343434]">
       <View className="relative z-0 px-5 bg-[#343434] pb-5">
         <View className="flex-row items-center justify-center">
           <TouchableOpacity
@@ -31,20 +37,11 @@ const BookListByCategory = ({ navigation }) => {
       </View>
       <ScrollView
         showsVerticalScrollIndicator={false}
-        className="flex-1  rounded-[15px] mt-[-15px]"
+        className="flex-1 bg-white rounded-t-[15px] mt-[-15px]"
       >
         <View className="flex-1  bg-white  rounded-t-[15px]  relative z-10 p-5 pb-0 ">
-          <View className="bg-[#eaeaea]  rounded-[15px] flex-row items-center justify-center  h-12 mb-3">
-            <MaterialIcons name="search" size={28} color="#8C8C8C" />
-            <TextInput
-              placeholder="Wyszukaj książkę"
-              selectionColor="#F15E3B"
-              cursorColor="#F15E3B"
-              placeholderTextColor="#8C8C8C"
-              className="text-sm font-[Poppins-Regular] pt-1 pl-4  mr-2 w-4/5 "
-            />
-          </View>
-          <View className="border-b border-[#ECECEC] pb-2">
+          <SearchButton />
+          <View className="border-b border-[#ECECEC] pb-2 mt-3">
             <TouchableOpacity
               onPress={() => navigation.navigate("CategoriesScreen", { data })}
             >
@@ -56,10 +53,25 @@ const BookListByCategory = ({ navigation }) => {
               </Text>
             </TouchableOpacity>
           </View>
+          <View className="pb-2 mt-6 flex-1">
+            {booksByCategory.length ? (
+              booksByCategory.map((book) => {
+                return <BookCard data={book} key={book.id} />;
+              })
+            ) : (
+              <View>
+                <View>
+                  <Text className="text-[#333] font-[Poppins-Regular] ">
+                    Nie znaleziono książek w kategorii "{data.title}"
+                  </Text>
+                </View>
+              </View>
+            )}
+          </View>
         </View>
       </ScrollView>
     </View>
   );
 };
 
-export default BookListByCategory;
+export default BookListByCategoryScreen;

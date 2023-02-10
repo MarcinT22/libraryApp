@@ -9,6 +9,7 @@ import { useCallback } from "react";
 import BottomTabsNavigator from "./navigations/BottomTabsNavigator";
 import BookScreen from "./screens/BookScreen";
 import CategoriesScreen from "./screens/CategoriesScreen";
+import BookListByCategoryScreen from "./screens/BookListByCategoryScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -31,17 +32,27 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView className="flex-1 bg-[#343434]">
+    <SafeAreaView className="flex-1 bg-[#343434] ">
       <StatusBar style="light" backgroundColor="#343434" translucent={false} />
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
             headerShown: false,
+            animation: "fade",
           }}
           initialRouteName="TabNavigator"
         >
           <Stack.Screen name="TabNavigator" component={BottomTabsNavigator} />
-          <Stack.Screen name="BookScreen" component={BookScreen} />
+          <Stack.Screen
+            name="BookScreen"
+            component={BookScreen}
+            options={{ animation: "flip" }}
+          />
+          <Stack.Screen
+            name="BookListByCategoryScreen"
+            component={BookListByCategoryScreen}
+          />
+
           <Stack.Screen name="CategoriesScreen" component={CategoriesScreen} />
         </Stack.Navigator>
       </NavigationContainer>

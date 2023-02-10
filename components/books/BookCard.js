@@ -29,7 +29,7 @@ export default function BookCard({ data, news }) {
         >
           {data.title}
         </Text>
-        <Text className="text-sm color-[#8C8C8C] font-[Poppins-Regular]">
+        <Text className="text-sm color-[#8C8C8C] font-[Poppins-Regular] leading-4 pt-1">
           {data.author}
         </Text>
       </View>

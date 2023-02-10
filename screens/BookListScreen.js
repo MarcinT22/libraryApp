@@ -6,6 +6,7 @@ import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import BookCard from "../components/books/BookCard";
 import { books } from "../data/books";
 import { useNavigation } from "@react-navigation/native";
+import SearchButton from "../components/SearchButton";
 const BookListScreen = () => {
   return (
     <View className="flex-1 bg-[#343434]">
@@ -22,18 +23,9 @@ const BookListScreen = () => {
           </View>
         </View>
         <View className="flex-1 pb-10 bg-white rounded-t-[15px] mt-2 relative z-10 p-5">
-          <View className="bg-[#eaeaea]  rounded-[15px] flex-row items-center justify-center  h-12 mb-6 ">
-            <MaterialIcons name="search" size={28} color="#8C8C8C" />
-            <TextInput
-              placeholder="Wyszukaj książkę"
-              selectionColor="#F15E3B"
-              cursorColor="#F15E3B"
-              placeholderTextColor="#8C8C8C"
-              className="text-sm font-[Poppins-Regular] pt-1 pl-4  mr-2 w-4/5 "
-            />
-          </View>
-          <View className="pb-4">
-            {books.map((book) => {
+          <SearchButton />
+          <View className="mt-6 pb-4">
+            {books.reverse().map((book) => {
               return <BookCard data={book} key={book.id} />;
             })}
           </View>

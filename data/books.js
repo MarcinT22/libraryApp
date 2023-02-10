@@ -75,4 +75,31 @@ export const books = [
     description:
       "Tom 1. sagi o Wiedźminie to zbiór opowiadań, które pozwolą Ci poznać Geralta. Co ciekawe, książka „Ostatnie życzenie” ukazała się rok po drugim w chronologii wewnętrznej cyklu opowiadań – „Miecz przeznaczenia”. W skład tomu „Ostatnie życzenie” weszły cztery teksty z debiutanckiego zbioru „Wiedźmin”.",
   },
+  {
+    id: 9,
+    imgUrl: "https://ecsmedia.pl/c/hobbit-w-iext122055294.jpg",
+    title: "Hobbit",
+    author: "J.R.R. Tolkien",
+    category: "Fantastyka",
+    description:
+      "Światowej sławy pisarz angielski John Ronald Reuel Tolkien (1892–1973) był profesorem filologii angielskiej na uniwersytecie w Leeds oraz profesorem literatury średniowiecznej w Oksfordzie, znawcą literatury i języka staroangielskiego, staronordyckiego, starogermańskiego oraz gockiego. Jako powieściopisarz dał się poznać dopiero w 1937 roku, publikując Hobbita, który przyniósł mu rozgłos na całym świecie.W samej Anglii książka ta miała dziesiątki wydań. Zachęcony powodzeniemi prośbami oczarowanych czytelników, Tolkien powrócił do historii Bilbo Bagginsa, pisząc Trylogię Władca Pierścieni, kontynuację Hobbita. Zarówno Hobbit, jak i Władca Pierścieni powstały pod wpływem dobrze znanych autorowi skandynawskich mitów i staroangielskich legend, pełnych czarodziejów, smoków i przedmiotów o nadprzyrodzonej mocy. Fantastyczny, przemyślany do najdrobniejszych szczegółów świat powieści niezmiennie zachwyca kolejne pokolenia czytelników. ",
+  },
+  {
+    id: 10,
+    imgUrl: "https://ecsmedia.pl/c/zaczarowana-zagroda-w-iext123605891.jpg",
+    title: "Zaczarowana zagroda",
+    author: "Centkiewicz Alina , Centkiewicz Czesław",
+    category: "Dla dzieci",
+    description:
+      "Grupa polskich polarników bada życie pingwinów na wschodnim wybrzeżu Antarktydy. Zafascynowani ptakami naukowcy postanawiają zapędzić pingwiny do lodowej zagrody, aby je zaobrączkować. Następnego dnia okazuje się jednak, że zagroda jest pusta… Nowe wydanie z pięknymi ilustracjami Agnieszki Żelewskiej. Kolorowe ilustracje, poręczny format i duża czcionka – książka idealna do samodzielnego czytania! ",
+  },
+  {
+    id: 11,
+    imgUrl: "https://ecsmedia.pl/c/krew-i-popiol-tom-1-w-iext115531667.jpg",
+    title: "Krew i popiół. Tom 1",
+    author: "Armentrout Jennifer L.",
+    category: "Powieść historyczna",
+    description:
+      "Porzucone przez bogów i budzące strach w śmiertelnikach, upadłe królestwo znowu powstaje, by przemocą i zemstą odebrać to, co uznaje za swoją własność. A kiedy cień przeklętych zbliża się coraz bardziej, zaciera się granica między tym, co zakazane, a tym, co słuszne. Poppy może nie tylko zostać uznana za niegodną przez bogów, ale również stracić serce, a nawet życie, kiedy przesiąknięte krwią więzy spajające jej świat zaczną się strzępić.",
+  },
 ];

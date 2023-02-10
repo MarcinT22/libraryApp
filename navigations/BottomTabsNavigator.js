@@ -2,9 +2,11 @@ import React from "react";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import HomeScreen from "../screens/HomeScreen";
 
-import BooksNavigator from "./BooksNavigator";
+import BookListScreen from "../screens/BookListScreen";
+import SearchScreen from "../screens/SearchScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -52,8 +54,18 @@ const BottomTabsNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Books"
-        component={BooksNavigator}
+        name="Search"
+        component={SearchScreen}
+        options={{
+          title: "Szukaj",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="search" color={color} size={30} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="BookList"
+        component={BookListScreen}
         options={{
           title: "Książki",
           tabBarIcon: ({ color, size }) => (
