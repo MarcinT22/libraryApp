@@ -62,7 +62,7 @@ const SearchResults = ({ navigation }) => {
         showsVerticalScrollIndicator={false}
         className="flex-1 bg-white rounded-t-[15px] mt-[-15px] "
       >
-        <View className="flex-1  bg-white  rounded-t-[15px]  relative z-10 p-5 pb-0 ">
+        <View className="flex-1    relative z-10 p-5 pb-0 ">
           <SearchButton textSearched={textSearched} />
         </View>
         <View className="pb-2 flex-1">

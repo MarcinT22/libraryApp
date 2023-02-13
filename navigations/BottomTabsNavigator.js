@@ -9,6 +9,7 @@ import BookListScreen from "../screens/BookListScreen";
 import SearchScreen from "../screens/SearchScreen";
 import SearchNavigator from "./SearchNavigator";
 import { useNavigation } from "@react-navigation/native";
+import CartScreen from "../screens/CartScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -78,6 +79,26 @@ const BottomTabsNavigator = () => {
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons
               name="book-open-page-variant-outline"
+              color={color}
+              size={25}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Cart"
+        component={CartScreen}
+        options={{
+          title: "Koszyk",
+          tabBarBadge: 0,
+          tabBarBadgeStyle: {
+            backgroundColor: "#F15E3B",
+            fontSize: 10,
+            marginTop: -2,
+          },
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons
+              name="cart-outline"
               color={color}
               size={25}
             />

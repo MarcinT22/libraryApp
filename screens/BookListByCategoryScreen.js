@@ -40,7 +40,7 @@ const BookListByCategoryScreen = ({ navigation }) => {
         showsVerticalScrollIndicator={false}
         className="flex-1 bg-white rounded-t-[15px] mt-[-15px]"
       >
-        <View className="flex-1  bg-white  rounded-t-[15px]  relative z-10 p-5 pb-0 ">
+        <View className="flex-1   relative z-10 p-5 pb-0 ">
           <SearchButton />
           <View className="border-b border-[#ECECEC] pb-2 mt-3">
             <TouchableOpacity
