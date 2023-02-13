@@ -1,14 +1,8 @@
-import {
-  View,
-  Text,
-  ScrollView,
-  TouchableOpacity,
-  FlatList,
-} from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import React, { useEffect, useState } from "react";
 import Loader from "../components/Loader";
 
-import CategoriesList from "../components/categories/CategoriesList";
+import CategoryList from "../components/categories/CategoryList";
 import { categories } from "../data/categories";
 import { books } from "../data/books";
 
@@ -34,7 +28,7 @@ const HomeScreen = () => {
             stickyHeaderIndices={[0]}
             showsVerticalScrollIndicator={false}
           >
-            <View className="  relative z-0">
+            <View className="relative z-0">
               <View className="p-5 pb-0">
                 <SearchButton dark={true} />
               </View>
@@ -42,7 +36,7 @@ const HomeScreen = () => {
                 <Text className="color-white text-lg font-[Poppins-Bold] my-4 px-5">
                   Kategorie książek
                 </Text>
-                <CategoriesList data={categories} />
+                <CategoryList data={categories} />
               </View>
             </View>
             <View className="flex-1 pb-10  bg-white rounded-t-[15px] relative mt-2 z-10 p-5">
@@ -51,7 +45,7 @@ const HomeScreen = () => {
               <View className="pb-2">
                 {books
                   .reverse()
-                  .slice(0, 3)
+                  .slice(0, 5)
                   .map((book) => {
                     return <BookCard data={book} key={book.id} news={true} />;
                   })}

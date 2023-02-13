@@ -2,7 +2,7 @@ import { FlatList, View } from "react-native";
 import React from "react";
 import CategoryCard from "./CategoryCard";
 
-export default function CategoriesList({ data }) {
+export default function CategoryList({ data }) {
   return (
     <FlatList
       showsHorizontalScrollIndicator={false}

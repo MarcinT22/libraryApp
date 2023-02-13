@@ -20,16 +20,25 @@ const SearchScreen = ({ navigation }) => {
   const refInput = useRef();
 
   const search = async () => {
+    if (searchText.trim().length == 0) {
+      return false;
+    }
     try {
-      searchStorage.push(searchText);
-      const output = JSON.stringify(searchStorage);
+      if (!searchStorage.includes(searchText)) {
+        searchStorage.push(searchText);
+      }
 
+      const output = JSON.stringify(searchStorage.reverse());
       await AsyncStorage.setItem("searchStorage", output);
+
+      navigation.navigate("SearchNavigator", {
+        screen: "SearchResults",
+        initial: false,
+        params: { textSearched: searchText },
+      });
     } catch (e) {
       console.warn(e);
     }
-
-    setSearchText("");
   };
 
   const getSearchList = async () => {
@@ -54,36 +63,47 @@ const SearchScreen = ({ navigation }) => {
   };
 
   useEffect(() => {
-    getSearchList();
-    setTimeout(() => {
-      refInput.current.focus();
-    }, 100);
-  }, []);
+    const focusHandler = navigation.addListener("focus", () => {
+      setSearchText("");
+      getSearchList();
+      setTimeout(() => {
+        refInput.current.focus();
+      }, 100);
+    });
+    return focusHandler;
+  }, [navigation]);
 
   return (
-    <View className="flex-1 bg-white p-5">
+    <View className="flex-1 bg-white">
       {isFocused && (
         <StatusBar backgroundColor="#ffffff" barStyle="dark-content" />
       )}
-      <View className="bg-[#343434]  rounded-[15px] flex-row items-center justify-center  h-12 mb-3">
-        <MaterialIcons name="search" size={28} color="#fff" />
-        <TextInput
-          onSubmitEditing={() => search()}
-          returnKeyType="search"
-          autoCapitalize="none"
-          ref={refInput}
-          value={searchText}
-          onChangeText={(text) => setSearchText(text)}
-          placeholder="Wyszukaj książkę"
-          selectionColor="#F15E3B"
-          cursorColor="#F15E3B"
-          placeholderTextColor="#fff"
-          className="text-sm font-[Poppins-Regular] pt-1 pl-4 text-white mr-2 w-4/5 "
-        />
+      <View className="flex-row items-center justify-between py-3 pl-4 pr-5">
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <MaterialCommunityIcons name="arrow-left" color="#000" size={30} />
+        </TouchableOpacity>
+        <View className="bg-[#343434]  rounded-[30px] flex-row items-center justify-center  h-12 ml-2">
+          <TextInput
+            onSubmitEditing={() => search()}
+            returnKeyType="search"
+            autoCapitalize="none"
+            ref={refInput}
+            value={searchText}
+            onChangeText={(text) => setSearchText(text)}
+            placeholder="Wyszukaj książkę"
+            selectionColor="#F15E3B"
+            cursorColor="#F15E3B"
+            placeholderTextColor="#fff"
+            className="text-sm font-[Poppins-Regular] pt-1 pl-2 pr-4 text-white mr-2 w-4/5 "
+          />
+          <TouchableOpacity onPress={() => search()}>
+            <MaterialIcons name="search" size={28} color="#fff" />
+          </TouchableOpacity>
+        </View>
       </View>
 
       {searchStorage.length > 0 ? (
-        <View>
+        <View className="mb-3  px-5">
           <ScrollView
             showsVerticalScrollIndicator={false}
             keyboardShouldPersistTaps="handled"
@@ -102,7 +122,16 @@ const SearchScreen = ({ navigation }) => {
               {searchStorage.map((item, index) => {
                 return (
                   <View key={index}>
-                    <TouchableOpacity className="flex-row items-center py-1.5">
+                    <TouchableOpacity
+                      className="flex-row items-center py-1.5"
+                      onPress={() =>
+                        navigation.navigate("SearchNavigator", {
+                          screen: "SearchResults",
+                          initial: false,
+                          params: { textSearched: item },
+                        })
+                      }
+                    >
                       <MaterialCommunityIcons
                         name="clock-time-seven-outline"
                         color="#8C8C8C"
@@ -119,7 +148,9 @@ const SearchScreen = ({ navigation }) => {
           </ScrollView>
         </View>
       ) : (
-        <Text className="py-2 text-[#8C8C8C]">Brak ostatnich wyszukiwań</Text>
+        <Text className="py-2 px-5 text-[#8C8C8C]">
+          Brak ostatnich wyszukiwań
+        </Text>
       )}
     </View>
   );

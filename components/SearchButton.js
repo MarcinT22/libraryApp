@@ -3,15 +3,19 @@ import React from "react";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { useNavigation } from "@react-navigation/native";
 
-const SearchButton = ({ dark }) => {
+const SearchButton = ({ dark, textSearched }) => {
   const navigation = useNavigation();
 
   return (
     <TouchableOpacity
       className={`flex-row items-center ${
         dark ? "bg-[#292929]" : "bg-[#EAEAEA]"
-      } h-12 rounded-[15px] px-4`}
-      onPress={() => navigation.navigate("Search")}
+      } h-12 rounded-[30px] px-4`}
+      onPress={() =>
+        navigation.navigate("SearchNavigator", {
+          screen: "Search",
+        })
+      }
     >
       <MaterialIcons
         name="search"
@@ -23,7 +27,7 @@ const SearchButton = ({ dark }) => {
           dark ? "text-white" : "text-[#8C8C8C]"
         }`}
       >
-        Wyszukaj książkę
+        {textSearched ? textSearched : "Wyszukaj książkę"}
       </Text>
     </TouchableOpacity>
   );

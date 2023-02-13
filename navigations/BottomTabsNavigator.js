@@ -7,27 +7,29 @@ import HomeScreen from "../screens/HomeScreen";
 
 import BookListScreen from "../screens/BookListScreen";
 import SearchScreen from "../screens/SearchScreen";
+import SearchNavigator from "./SearchNavigator";
+import { useNavigation } from "@react-navigation/native";
 
 const Tab = createBottomTabNavigator();
 
 const BottomTabsNavigator = () => {
+  const navigation = useNavigation();
   return (
     <Tab.Navigator
       initialRouteName="Home"
+      backBehavior="history"
       screenOptions={{
         unmountOnBlur: true,
         tabBarHideOnKeyboard: true,
         tabBarInactiveTintColor: "#444",
         tabBarActiveTintColor: "#F15E3B",
         tabBarStyle: {
+          borderTopWidth: 0,
           elevation: 0,
           backgroundColor: "#EAEAEA",
           borderTopLeftRadius: 15,
           borderTopRightRadius: 15,
           position: "absolute",
-          // left: 10,
-          // right: 10,
-          // bottom: 0,
         },
         headerShown: false,
 
@@ -54,13 +56,18 @@ const BottomTabsNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Search"
-        component={SearchScreen}
+        name="SearchNavigator"
+        component={SearchNavigator}
         options={{
           title: "Szukaj",
           tabBarIcon: ({ color, size }) => (
             <MaterialIcons name="search" color={color} size={30} />
           ),
+        }}
+        listeners={{
+          tabPress: () => {
+            navigation.navigate("SearchNavigator", { screen: "Search" });
+          },
         }}
       />
       <Tab.Screen

@@ -1,6 +1,6 @@
 import { View, Text, ScrollView, TextInput, Animated } from "react-native";
 import React from "react";
-import CategoriesList from "../components/categories/CategoriesList";
+import CategoryList from "../components/categories/CategoryList";
 import { categories } from "../data/categories";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import BookCard from "../components/books/BookCard";
@@ -19,7 +19,7 @@ const BookListScreen = () => {
             <Text className="color-white text-lg font-[Poppins-Bold] my-4 text-center">
               Kategorie książek
             </Text>
-            <CategoriesList data={categories} />
+            <CategoryList data={categories} />
           </View>
         </View>
         <View className="flex-1 pb-10 bg-white rounded-t-[15px] mt-2 relative z-10 p-5">

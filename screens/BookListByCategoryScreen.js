@@ -11,8 +11,9 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { books } from "../data/books";
 import BookCard from "../components/books/BookCard";
-import Lottie from "lottie-react-native";
+
 import SearchButton from "../components/SearchButton";
+import Lottie from "lottie-react-native";
 const BookListByCategoryScreen = ({ navigation }) => {
   const {
     params: { data },
@@ -60,8 +61,13 @@ const BookListByCategoryScreen = ({ navigation }) => {
               })
             ) : (
               <View>
-                <View>
-                  <Text className="text-[#333] font-[Poppins-Regular] ">
+                <View className="justify-center items-center">
+                  <Lottie
+                    source={require("../assets/lottie/90755-no-search-result")}
+                    autoPlay
+                    className="w-40"
+                  />
+                  <Text className="text-[#333] font-[Poppins-Regular] text-lg text-center mt-4">
                     Nie znaleziono książek w kategorii "{data.title}"
                   </Text>
                 </View>

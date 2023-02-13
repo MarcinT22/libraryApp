@@ -15,7 +15,7 @@ export const categories = [
     id: 3,
     imgUrl:
       "https://ecsmedia.pl/c/slowa-z-ktorymi-was-zostawiam-w-iext115557782.jpg",
-    title: "Religia",
+    title: "Książki religijne",
   },
   {
     id: 4,
