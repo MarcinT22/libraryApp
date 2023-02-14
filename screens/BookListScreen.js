@@ -26,7 +26,14 @@ const BookListScreen = () => {
           <SearchButton />
           <View className="mt-6 pb-4">
             {books.reverse().map((book) => {
-              return <BookCard data={book} key={book.id} />;
+              return (
+                <View
+                  className="border-b border-[#ECECEC] pb-4 mb-4"
+                  key={book.id}
+                >
+                  <BookCard data={book} />
+                </View>
+              );
             })}
           </View>
         </View>

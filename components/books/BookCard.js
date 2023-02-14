@@ -7,7 +7,7 @@ export default function BookCard({ data, news }) {
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate("BookScreen", { data })}
-      className="flex-row flex-wrap border-b border-[#ECECEC] pb-4 mb-4"
+      className="flex-row flex-wrap "
     >
       <View className="w-1/3 ">
         <Image

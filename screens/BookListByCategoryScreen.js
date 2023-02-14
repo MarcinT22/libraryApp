@@ -57,7 +57,14 @@ const BookListByCategoryScreen = ({ navigation }) => {
           <View className="pb-2 mt-6 flex-1">
             {booksByCategory.length ? (
               booksByCategory.map((book) => {
-                return <BookCard data={book} key={book.id} />;
+                return (
+                  <View
+                    className="border-b border-[#ECECEC] pb-4 mb-4"
+                    key={book.id}
+                  >
+                    <BookCard data={book} />
+                  </View>
+                );
               })
             ) : (
               <View>

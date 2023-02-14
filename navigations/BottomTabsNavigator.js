@@ -10,10 +10,14 @@ import SearchScreen from "../screens/SearchScreen";
 import SearchNavigator from "./SearchNavigator";
 import { useNavigation } from "@react-navigation/native";
 import CartScreen from "../screens/CartScreen";
+import { selectCartItems } from "../slices/cartSlice";
+import { useSelector } from "react-redux";
 
 const Tab = createBottomTabNavigator();
 
 const BottomTabsNavigator = () => {
+  const items = useSelector(selectCartItems);
+
   const navigation = useNavigation();
   return (
     <Tab.Navigator
@@ -90,7 +94,7 @@ const BottomTabsNavigator = () => {
         component={CartScreen}
         options={{
           title: "Koszyk",
-          tabBarBadge: 0,
+          tabBarBadge: items.length,
           tabBarBadgeStyle: {
             backgroundColor: "#F15E3B",
             fontSize: 10,

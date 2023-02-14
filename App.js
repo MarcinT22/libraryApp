@@ -11,6 +11,9 @@ import BookScreen from "./screens/BookScreen";
 import CategoriesScreen from "./screens/CategoriesScreen";
 import BookListByCategoryScreen from "./screens/BookListByCategoryScreen";
 
+import { Provider } from "react-redux";
+import store from "./store";
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -35,26 +38,31 @@ export default function App() {
     <SafeAreaView className="flex-1 bg-[#343434] ">
       <StatusBar style="light" backgroundColor="#343434" translucent={false} />
       <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerShown: false,
-            animation: "fade",
-          }}
-          initialRouteName="TabNavigator"
-        >
-          <Stack.Screen name="TabNavigator" component={BottomTabsNavigator} />
-          <Stack.Screen
-            name="BookScreen"
-            component={BookScreen}
-            options={{ animation: "flip" }}
-          />
-          <Stack.Screen
-            name="BookListByCategoryScreen"
-            component={BookListByCategoryScreen}
-          />
+        <Provider store={store}>
+          <Stack.Navigator
+            screenOptions={{
+              headerShown: false,
+              animation: "fade",
+            }}
+            initialRouteName="TabNavigator"
+          >
+            <Stack.Screen name="TabNavigator" component={BottomTabsNavigator} />
+            <Stack.Screen
+              name="BookScreen"
+              component={BookScreen}
+              options={{ animation: "flip" }}
+            />
+            <Stack.Screen
+              name="BookListByCategoryScreen"
+              component={BookListByCategoryScreen}
+            />
 
-          <Stack.Screen name="CategoriesScreen" component={CategoriesScreen} />
-        </Stack.Navigator>
+            <Stack.Screen
+              name="CategoriesScreen"
+              component={CategoriesScreen}
+            />
+          </Stack.Navigator>
+        </Provider>
       </NavigationContainer>
     </SafeAreaView>
   );

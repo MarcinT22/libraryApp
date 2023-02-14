@@ -12,7 +12,6 @@ import SearchButton from "../components/SearchButton";
 
 const HomeScreen = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const navigation = useNavigation();
 
   useEffect(() => {
     setTimeout(() => {
@@ -47,7 +46,14 @@ const HomeScreen = () => {
                   .reverse()
                   .slice(0, 5)
                   .map((book) => {
-                    return <BookCard data={book} key={book.id} news={true} />;
+                    return (
+                      <View
+                        className="border-b border-[#ECECEC] pb-4 mb-4"
+                        key={book.id}
+                      >
+                        <BookCard data={book} news={true} />
+                      </View>
+                    );
                   })}
               </View>
             </View>

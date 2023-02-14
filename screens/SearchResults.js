@@ -89,7 +89,14 @@ const SearchResults = ({ navigation }) => {
             <View className="px-5">
               <View className="pb-5 mt-6 flex-1">
                 {searchResults.map((book) => {
-                  return <BookCard data={book} key={book.id} />;
+                  return (
+                    <View
+                      className="border-b border-[#ECECEC] pb-4 mb-4"
+                      key={book.id}
+                    >
+                      <BookCard data={book} />
+                    </View>
+                  );
                 })}
               </View>
             </View>

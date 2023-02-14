@@ -1,17 +1,39 @@
-import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
-import React from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+  Modal,
+} from "react-native";
+import React, { useState } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../slices/cartSlice";
+import AddedToCartModal from "../components/modals/AddedToCartModal";
 
 const BookScreen = () => {
   const navigation = useNavigation();
+  const [visibleModal, setVisibleModal] = useState(false);
 
   const {
     params: { data },
   } = useRoute();
 
+  const dispatch = useDispatch();
+  const addItemToCart = () => {
+    dispatch(addToCart(data));
+    setVisibleModal(true);
+  };
+
   return (
     <View className="flex-1 bg-[#343434]">
+      <AddedToCartModal
+        data={data}
+        visible={visibleModal}
+        setVisibleModal={setVisibleModal}
+      />
       <View className="relative z-0 px-5 ">
         <View className="flex-row items-center justify-center">
           <TouchableOpacity
@@ -80,7 +102,10 @@ const BookScreen = () => {
         </View>
       </ScrollView>
       <View className="bg-white px-5 pb-4 pt-4">
-        <TouchableOpacity className="py-3 bg-[#F15E3B] rounded-[10px] ">
+        <TouchableOpacity
+          onPress={() => addItemToCart()}
+          className="py-3 bg-[#F15E3B] rounded-[10px] "
+        >
           <Text className="text-center text-white font-[Poppins-Bold] text-xl uppercase ">
             Wypożyczam
           </Text>
