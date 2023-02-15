@@ -6,20 +6,21 @@ import {
   ScrollView,
   Modal,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../slices/cartSlice";
 import AddedToCartModal from "../components/modals/AddedToCartModal";
+import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
 
 const BookScreen = () => {
-  const navigation = useNavigation();
-  const [visibleModal, setVisibleModal] = useState(false);
-
   const {
     params: { data },
   } = useRoute();
+
+  const navigation = useNavigation();
+  const [visibleModal, setVisibleModal] = useState(false);
 
   const dispatch = useDispatch();
   const addItemToCart = () => {
@@ -29,11 +30,6 @@ const BookScreen = () => {
 
   return (
     <View className="flex-1 bg-[#343434]">
-      <AddedToCartModal
-        data={data}
-        visible={visibleModal}
-        setVisibleModal={setVisibleModal}
-      />
       <View className="relative z-0 px-5 ">
         <View className="flex-row items-center justify-center">
           <TouchableOpacity
@@ -111,6 +107,20 @@ const BookScreen = () => {
           </Text>
         </TouchableOpacity>
       </View>
+
+      {visibleModal && (
+        <Animated.View
+          entering={FadeIn}
+          exiting={FadeOut}
+          className="bg-black/50 absolute top-0 left-0 bottom-0 right-0"
+        >
+          <AddedToCartModal
+            data={data}
+            visible={visibleModal}
+            setVisibleModal={setVisibleModal}
+          />
+        </Animated.View>
+      )}
     </View>
   );
 };

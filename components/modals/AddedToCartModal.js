@@ -1,10 +1,18 @@
-import { View, Text, Modal, TouchableOpacity, Image } from "react-native";
+import {
+  View,
+  Text,
+  Modal,
+  TouchableOpacity,
+  Image,
+  StatusBar,
+} from "react-native";
 import React from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import BookCard from "../books/BookCard";
 import { useNavigation } from "@react-navigation/native";
 const AddedToCartModal = ({ data, visible, setVisibleModal }) => {
   const navigation = useNavigation();
+
   return (
     <Modal
       visible={visible}
@@ -12,7 +20,9 @@ const AddedToCartModal = ({ data, visible, setVisibleModal }) => {
       animationType="slide"
       onRequestClose={() => setVisibleModal(false)}
     >
-      <View className="flex-1 bg-black/50 justify-end">
+      {visible && <StatusBar backgroundColor="rgba(0,0,0,0.9)" />}
+
+      <View className="flex-1 justify-end">
         <View className="p-5 pb-3 bg-white rounded-t-[15px]">
           <View className="flex-row justify-between items-center">
             <Text className="font-[Poppins-Bold] text-lg text-black">

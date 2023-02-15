@@ -2,15 +2,19 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import FontAwesome from "react-native-vector-icons/FontAwesome5";
 import { useNavigation } from "@react-navigation/native";
+import { useDispatch } from "react-redux";
+import { removeFromCart } from "../../slices/cartSlice";
+
 const CartItem = ({ data }) => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const removeItem = () => {
-    alert("Czy chcesz usunąć (modal) lub pasek z cofnij");
+    dispatch(removeFromCart(data));
   };
 
   return (
-    <View className="border-b border-[#ECECEC] py-3 relative">
+    <View className="border-b border-[#ECECEC] py-3">
       <TouchableOpacity
         onPress={() => navigation.navigate("BookScreen", { data })}
         className="flex-row items-center"
