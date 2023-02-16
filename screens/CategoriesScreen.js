@@ -5,6 +5,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 
 import { categories } from "../data/categories";
 import CategoryCard from "../components/categories/CategoryCard";
+import Header from "../components/Header";
 
 const CategoriesScreen = ({ navigation }) => {
   const {
@@ -13,40 +14,26 @@ const CategoriesScreen = ({ navigation }) => {
 
   return (
     <View className="flex-1 bg-[#343434]">
-      <View className="relative z-0 px-5 bg-[#343434] pb-5">
-        <View className="flex-row items-center justify-center">
-          <TouchableOpacity
-            className="absolute left-0"
-            onPress={() => navigation.goBack()}
-          >
-            <MaterialCommunityIcons name="arrow-left" color="#fff" size={30} />
-          </TouchableOpacity>
-          <Text className="color-white text-lg font-[Poppins-Bold] my-4 text-center">
-            Wybierz kategorię
-          </Text>
-        </View>
-      </View>
+      <Header title="Wybierz kategorię" />
 
-      <View className="flex-1 mt-[-15px]">
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          className="flex-1  bg-white  rounded-t-[15px]  relative z-10 p-5 pb-0"
-        >
-          <View className="flex-row flex-wrap  ">
-            {categories.map((category) => {
-              return (
-                <View className="mb-4 px-2 w-1/3" key={category.id}>
-                  <CategoryCard
-                    data={category}
-                    light={true}
-                    active={data.id == category.id ? true : false}
-                  />
-                </View>
-              );
-            })}
-          </View>
-        </ScrollView>
-      </View>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        className="flex-1  bg-white  rounded-t-[15px]  relative z-10 p-5 pb-0"
+      >
+        <View className="flex-row flex-wrap  ">
+          {categories.map((category) => {
+            return (
+              <View className="mb-4 px-2 w-1/3" key={category.id}>
+                <CategoryCard
+                  data={category}
+                  light={true}
+                  active={data.id == category.id ? true : false}
+                />
+              </View>
+            );
+          })}
+        </View>
+      </ScrollView>
     </View>
   );
 };

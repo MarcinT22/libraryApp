@@ -13,6 +13,7 @@ import Lottie from "lottie-react-native";
 import { books } from "../data/books";
 import BookCard from "../components/books/BookCard";
 import BookList from "../components/books/BookList";
+import Header from "../components/Header";
 
 const SearchResults = ({ navigation }) => {
   const {
@@ -45,22 +46,10 @@ const SearchResults = ({ navigation }) => {
 
   return (
     <View className="flex-1 bg-[#343434]">
-      <View className="relative z-0 px-5 bg-[#343434] pb-5">
-        <View className="flex-row items-center justify-center">
-          <TouchableOpacity
-            className="absolute left-0"
-            onPress={() => navigation.goBack()}
-          >
-            <MaterialCommunityIcons name="arrow-left" color="#fff" size={30} />
-          </TouchableOpacity>
-          <Text className="color-white text-lg font-[Poppins-Bold] my-4 text-center">
-            Wyniki wyszukiwania
-          </Text>
-        </View>
-      </View>
+      <Header title="Wyniki wyszukiwania" />
       <ScrollView
         showsVerticalScrollIndicator={false}
-        className="flex-1 bg-white rounded-t-[15px] mt-[-15px] "
+        className="flex-1 bg-white rounded-t-[15px]"
       >
         <View className="flex-1    relative z-10 p-5 pb-0 ">
           <SearchButton textSearched={textSearched} />

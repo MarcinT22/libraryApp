@@ -10,7 +10,7 @@ import BottomTabsNavigator from "./navigations/BottomTabsNavigator";
 import BookScreen from "./screens/BookScreen";
 import CategoriesScreen from "./screens/CategoriesScreen";
 import BookListByCategoryScreen from "./screens/BookListByCategoryScreen";
-
+import DeliverySelectionScreen from "./screens/DeliverySelectionScreen";
 import { Provider } from "react-redux";
 import store from "./store";
 
@@ -60,6 +60,10 @@ export default function App() {
             <Stack.Screen
               name="CategoriesScreen"
               component={CategoriesScreen}
+            />
+            <Stack.Screen
+              name="DeliverySelectionScreen"
+              component={DeliverySelectionScreen}
             />
           </Stack.Navigator>
         </Provider>

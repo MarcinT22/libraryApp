@@ -17,6 +17,7 @@ import Animated, {
   useAnimatedStyle,
   withSpring,
 } from "react-native-reanimated";
+import Header from "../components/Header";
 
 const CartScreen = ({ navigation }) => {
   const items = useSelector(selectCartItems);
@@ -64,25 +65,13 @@ const CartScreen = ({ navigation }) => {
 
   return (
     <View className="flex-1 bg-[#343434]">
-      <View className="relative  px-5 bg-[#343434] pb-5">
-        <View className="flex-row items-center justify-center">
-          <TouchableOpacity
-            className="absolute left-0"
-            onPress={() => navigation.goBack()}
-          >
-            <MaterialCommunityIcons name="arrow-left" color="#fff" size={30} />
-          </TouchableOpacity>
-          <Text className="color-white text-lg font-[Poppins-Bold] my-4 text-center">
-            Koszyk
-          </Text>
-        </View>
-      </View>
+      <Header title="Koszyk" />
       {items.length > 0 ? (
         <>
           <ScrollView
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{ paddingBottom: 100 }}
-            className="flex-1 bg-white rounded-t-[15px] mt-[-15px] px-5"
+            className="flex-1 bg-white rounded-t-[15px]  px-5"
           >
             {items.map((data) => {
               return <CartItem key={data.id} data={data} remove={remove} />;
@@ -90,8 +79,11 @@ const CartScreen = ({ navigation }) => {
           </ScrollView>
 
           <View className="bg-white px-5 pb-16 pt-4">
-            <TouchableOpacity className="py-3 bg-[#F15E3B] rounded-[10px] ">
-              <Text className="text-center text-white font-[Poppins-Bold] text-xl uppercase ">
+            <TouchableOpacity
+              className="py-3 bg-[#F15E3B] rounded-[10px] "
+              onPress={() => navigation.navigate("DeliverySelectionScreen")}
+            >
+              <Text className="text-center text-white font-[Poppins-Bold] text-lg uppercase ">
                 Wypożyczam
               </Text>
             </TouchableOpacity>

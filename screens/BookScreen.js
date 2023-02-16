@@ -13,13 +13,13 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../slices/cartSlice";
 import AddedToCartModal from "../components/modals/AddedToCartModal";
 import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
+import Header from "../components/Header";
 
 const BookScreen = () => {
   const {
     params: { data },
   } = useRoute();
 
-  const navigation = useNavigation();
   const [visibleModal, setVisibleModal] = useState(false);
 
   const dispatch = useDispatch();
@@ -30,19 +30,7 @@ const BookScreen = () => {
 
   return (
     <View className="flex-1 bg-[#343434]">
-      <View className="relative z-0 px-5 ">
-        <View className="flex-row items-center justify-center">
-          <TouchableOpacity
-            className="absolute left-0"
-            onPress={() => navigation.goBack()}
-          >
-            <MaterialCommunityIcons name="arrow-left" color="#fff" size={30} />
-          </TouchableOpacity>
-          <Text className="color-white text-lg font-[Poppins-Bold] my-4 text-center">
-            Szczegóły książki
-          </Text>
-        </View>
-      </View>
+      <Header title="Szczegóły książki" />
       <ScrollView
         showsVerticalScrollIndicator={false}
         className="flex-1  bg-white "
@@ -102,7 +90,7 @@ const BookScreen = () => {
           onPress={() => addItemToCart()}
           className="py-3 bg-[#F15E3B] rounded-[10px] "
         >
-          <Text className="text-center text-white font-[Poppins-Bold] text-xl uppercase ">
+          <Text className="text-center text-white font-[Poppins-Bold] text-lg uppercase ">
             Wypożyczam
           </Text>
         </TouchableOpacity>
