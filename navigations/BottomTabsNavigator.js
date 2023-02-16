@@ -51,7 +51,7 @@ const BottomTabsNavigator = () => {
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
               name="home-outline"
               color={color}
@@ -65,7 +65,7 @@ const BottomTabsNavigator = () => {
         component={SearchNavigator}
         options={{
           title: "Szukaj",
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ color }) => (
             <MaterialIcons name="search" color={color} size={30} />
           ),
         }}
@@ -80,7 +80,7 @@ const BottomTabsNavigator = () => {
         component={BookListScreen}
         options={{
           title: "Książki",
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
               name="book-open-page-variant-outline"
               color={color}
@@ -100,7 +100,7 @@ const BottomTabsNavigator = () => {
             fontSize: 10,
             marginTop: -2,
           },
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
               name="cart-outline"
               color={color}
