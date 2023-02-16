@@ -31,7 +31,7 @@ const BottomTabsNavigator = () => {
         tabBarStyle: {
           borderTopWidth: 0,
           elevation: 0,
-          backgroundColor: "#EAEAEA",
+          backgroundColor: "#f5f5f5",
           borderTopLeftRadius: 15,
           borderTopRightRadius: 15,
           position: "absolute",

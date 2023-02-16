@@ -1,5 +1,11 @@
-import { View, Text, TouchableOpacity, ScrollView } from "react-native";
-import React from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  Dimensions,
+} from "react-native";
+import React, { useEffect, useRef, useState } from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import CartItem from "../components/cart/CartItem";
 import { useSelector } from "react-redux";
@@ -7,9 +13,48 @@ import { selectCartItems } from "../slices/cartSlice";
 import Lottie from "lottie-react-native";
 import BookList from "../components/books/BookList";
 import { books } from "../data/books";
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+} from "react-native-reanimated";
 
 const CartScreen = ({ navigation }) => {
   const items = useSelector(selectCartItems);
+
+  const [isRemoved, setIsRemove] = useState(false);
+  const width = Dimensions.get("window").width;
+
+  const offset = useSharedValue(-width);
+  const [timeoutID, setTimeoutId] = useState(null);
+
+  function remove() {
+    clearTimeout(timeoutID);
+    offset.value = -width;
+
+    setTimeout(() => {
+      offset.value = 0;
+      hiddenInfo();
+    }, 500);
+  }
+
+  function hiddenInfo() {
+    setTimeout(
+      setTimeout(() => {
+        offset.value = -width;
+      }, 3000)
+    );
+  }
+
+  const animatedStyles = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          translateX: withSpring(offset.value),
+        },
+      ],
+    };
+  });
 
   return (
     <View className="flex-1 bg-[#343434]">
@@ -33,12 +78,15 @@ const CartScreen = ({ navigation }) => {
             className="flex-1 bg-white rounded-t-[15px] mt-[-15px] px-5"
           >
             {items.map((data) => {
-              return <CartItem key={data.id} data={data} />;
+              return <CartItem key={data.id} data={data} remove={remove} />;
             })}
           </ScrollView>
 
           <View className="bg-white px-5 pb-16 pt-4">
-            <TouchableOpacity className="py-3 bg-[#F15E3B] rounded-[10px] ">
+            <TouchableOpacity
+              className="py-3 bg-[#F15E3B] rounded-[10px] "
+              onPress={() => (offset.value = 0)}
+            >
               <Text className="text-center text-white font-[Poppins-Bold] text-xl uppercase ">
                 Wypożyczam
               </Text>
@@ -68,6 +116,35 @@ const CartScreen = ({ navigation }) => {
           </View>
         </ScrollView>
       )}
+
+      <Animated.View
+        className="px-5 py-3 bg-gray-100 absolute bottom-16 right-5 left-5 rounded-lg flex-row justify-between items-center"
+        style={
+          ([
+            {
+              shadowColor: "#999",
+              shadowOffset: {
+                width: 0,
+                height: 2,
+              },
+              shadowOpacity: 0.23,
+              shadowRadius: 2.62,
+
+              elevation: 4,
+            },
+          ],
+          animatedStyles)
+        }
+      >
+        <Text className="font-[Poppins-Regular]">
+          Usunięto książkę z koszyka.
+        </Text>
+        <TouchableOpacity onPress={() => (offset.value = -width)}>
+          <Text className="font-[Poppins-SemiBold] text-[#F15E3B] uppercase tracking-wider ">
+            Cofnij
+          </Text>
+        </TouchableOpacity>
+      </Animated.View>
     </View>
   );
 };

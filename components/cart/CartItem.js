@@ -5,12 +5,13 @@ import { useNavigation } from "@react-navigation/native";
 import { useDispatch } from "react-redux";
 import { removeFromCart } from "../../slices/cartSlice";
 
-const CartItem = ({ data }) => {
+const CartItem = ({ data, remove }) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
   const removeItem = () => {
     dispatch(removeFromCart(data));
+    remove();
   };
 
   return (
