@@ -5,52 +5,56 @@ import {
   ScrollView,
   Dimensions,
 } from "react-native";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import CartItem from "../components/cart/CartItem";
-import { useSelector } from "react-redux";
-import { selectCartItems } from "../slices/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCartItems, undoRemoveFromCart } from "../slices/cartSlice";
 import Lottie from "lottie-react-native";
 import BookList from "../components/books/BookList";
 import { books } from "../data/books";
 import Animated, {
   useAnimatedStyle,
-  useSharedValue,
   withSpring,
 } from "react-native-reanimated";
 
 const CartScreen = ({ navigation }) => {
   const items = useSelector(selectCartItems);
+  const dispatch = useDispatch();
 
   const [isRemoved, setIsRemove] = useState(false);
   const width = Dimensions.get("window").width;
 
-  const offset = useSharedValue(-width);
   const [timeoutID, setTimeoutId] = useState(null);
 
   function remove() {
     clearTimeout(timeoutID);
-    offset.value = -width;
+    setIsRemove(false);
 
     setTimeout(() => {
-      offset.value = 0;
+      setIsRemove(true);
       hiddenInfo();
-    }, 300);
+    }, 250);
   }
 
   function hiddenInfo() {
     setTimeoutId(
       setTimeout(() => {
-        offset.value = -width;
+        setIsRemove(false);
       }, 3000)
     );
+  }
+
+  function undoRemove() {
+    setIsRemove(false);
+    dispatch(undoRemoveFromCart());
   }
 
   const animatedStyles = useAnimatedStyle(() => {
     return {
       transform: [
         {
-          translateX: withSpring(offset.value),
+          translateX: !isRemoved ? withSpring(-width) : withSpring(0),
         },
       ],
     };
@@ -83,10 +87,7 @@ const CartScreen = ({ navigation }) => {
           </ScrollView>
 
           <View className="bg-white px-5 pb-16 pt-4">
-            <TouchableOpacity
-              className="py-3 bg-[#F15E3B] rounded-[10px] "
-              onPress={() => (offset.value = 0)}
-            >
+            <TouchableOpacity className="py-3 bg-[#F15E3B] rounded-[10px] ">
               <Text className="text-center text-white font-[Poppins-Bold] text-xl uppercase ">
                 Wypożyczam
               </Text>
@@ -139,7 +140,7 @@ const CartScreen = ({ navigation }) => {
         <Text className="font-[Poppins-Regular]">
           Usunięto książkę z koszyka.
         </Text>
-        <TouchableOpacity onPress={() => (offset.value = -width)}>
+        <TouchableOpacity onPress={() => undoRemove()}>
           <Text className="font-[Poppins-SemiBold] text-[#F15E3B] uppercase tracking-wider ">
             Cofnij
           </Text>

@@ -130,10 +130,16 @@ export const cartSlice = createSlice({
 
       state.items = state.items.filter((item) => item.id !== action.payload.id);
     },
+
+    undoRemoveFromCart: (state) => {
+      state.items = [...state.items, state.removedItem[0]];
+      state.removedItem = [];
+    },
   },
 });
 
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, undoRemoveFromCart } =
+  cartSlice.actions;
 
 export const selectCartItems = (state) => state.cart.items;
 
