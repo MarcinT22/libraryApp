@@ -35,11 +35,11 @@ const CartScreen = ({ navigation }) => {
     setTimeout(() => {
       offset.value = 0;
       hiddenInfo();
-    }, 500);
+    }, 300);
   }
 
   function hiddenInfo() {
-    setTimeout(
+    setTimeoutId(
       setTimeout(() => {
         offset.value = -width;
       }, 3000)
