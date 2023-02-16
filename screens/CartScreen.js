@@ -5,7 +5,7 @@ import {
   ScrollView,
   Dimensions,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import CartItem from "../components/cart/CartItem";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,31 +22,33 @@ const CartScreen = ({ navigation }) => {
   const items = useSelector(selectCartItems);
   const dispatch = useDispatch();
 
-  const [isRemoved, setIsRemove] = useState(false);
+  const [isRemoved, setIsRemoved] = useState(false);
   const width = Dimensions.get("window").width;
 
   const [timeoutID, setTimeoutId] = useState(null);
 
   function remove() {
     clearTimeout(timeoutID);
-    setIsRemove(false);
+
+    const time = isRemoved ? 250 : 0;
+    setIsRemoved(false);
 
     setTimeout(() => {
-      setIsRemove(true);
-      hiddenInfo();
-    }, 250);
+      setIsRemoved(true);
+      hiddenRemoveInfo();
+    }, time);
   }
 
-  function hiddenInfo() {
+  function hiddenRemoveInfo() {
     setTimeoutId(
       setTimeout(() => {
-        setIsRemove(false);
+        setIsRemoved(false);
       }, 3000)
     );
   }
 
   function undoRemove() {
-    setIsRemove(false);
+    setIsRemoved(false);
     dispatch(undoRemoveFromCart());
   }
 
@@ -79,6 +81,7 @@ const CartScreen = ({ navigation }) => {
         <>
           <ScrollView
             showsVerticalScrollIndicator={false}
+            contentContainerStyle={{ paddingBottom: 100 }}
             className="flex-1 bg-white rounded-t-[15px] mt-[-15px] px-5"
           >
             {items.map((data) => {
@@ -119,23 +122,21 @@ const CartScreen = ({ navigation }) => {
       )}
 
       <Animated.View
-        className="px-5 py-3 bg-gray-100 absolute bottom-16 right-5 left-5 rounded-lg flex-row justify-between items-center"
-        style={
-          ([
-            {
-              shadowColor: "#999",
-              shadowOffset: {
-                width: 0,
-                height: 2,
-              },
-              shadowOpacity: 0.23,
-              shadowRadius: 2.62,
-
-              elevation: 4,
+        className="px-5 py-5 bg-[#f5f5f5] absolute bottom-16 right-3 left-3 rounded-lg  flex-row justify-between items-center "
+        style={[
+          {
+            shadowColor: "#999",
+            shadowOffset: {
+              width: 0,
+              height: 2,
             },
-          ],
-          animatedStyles)
-        }
+            shadowOpacity: 0.23,
+            shadowRadius: 2.62,
+
+            elevation: 4,
+          },
+          animatedStyles,
+        ]}
       >
         <Text className="font-[Poppins-Regular]">
           Usunięto książkę z koszyka.

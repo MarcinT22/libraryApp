@@ -4,6 +4,7 @@ import FontAwesome from "react-native-vector-icons/FontAwesome5";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch } from "react-redux";
 import { removeFromCart } from "../../slices/cartSlice";
+import Animated, { Layout } from "react-native-reanimated";
 
 const CartItem = ({ data, remove }) => {
   const navigation = useNavigation();
@@ -15,7 +16,7 @@ const CartItem = ({ data, remove }) => {
   };
 
   return (
-    <View className="border-b border-[#ECECEC] py-3">
+    <Animated.View layout={Layout} className="border-b border-[#ECECEC] py-3">
       <TouchableOpacity
         onPress={() => navigation.navigate("BookScreen", { data })}
         className="flex-row items-center"
@@ -53,7 +54,7 @@ const CartItem = ({ data, remove }) => {
         <FontAwesome name="trash" color="#DC5656" size={20} />
         <Text className="text-xs text-[#DC5656]">Usuń</Text>
       </TouchableOpacity>
-    </View>
+    </Animated.View>
   );
 };
 

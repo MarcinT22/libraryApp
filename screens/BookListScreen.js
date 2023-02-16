@@ -1,11 +1,11 @@
-import { View, Text, ScrollView, TextInput, Animated } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import React from "react";
 import CategoryList from "../components/categories/CategoryList";
 import { categories } from "../data/categories";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import BookCard from "../components/books/BookCard";
 import { books } from "../data/books";
-import { useNavigation } from "@react-navigation/native";
+
 import SearchButton from "../components/SearchButton";
 const BookListScreen = () => {
   return (
