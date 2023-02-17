@@ -7,25 +7,28 @@ import Animated, {
   withSpring,
 } from "react-native-reanimated";
 
+import { useNavigation } from "@react-navigation/native";
+
 const places = [
   {
     id: 1,
-    name: "BM Skoczów - P01",
-    address: "Skoczów, ul. Wałowa 3",
+    title: "BM Skoczów - P01",
+    description: "Skoczów, ul. Wałowa 3",
   },
   {
     id: 2,
-    name: "BM Skoczów - P02",
-    address: "Skoczów, Gleria Pledan, ul. Fabryczna 9",
+    title: "BM Skoczów - P02",
+    description: "Skoczów, Gleria Pledan, ul. Fabryczna 9",
   },
   {
     id: 3,
-    name: "BM Skoczów - P03",
-    address: "Skoczów, SP3, ul. Osiedlowa 1",
+    title: "BM Skoczów - P03",
+    description: "Skoczów, SP3, ul. Osiedlowa 1",
   },
 ];
 
 const DeliverySelectionScreen = () => {
+  const navigation = useNavigation();
   const [selectedItem, setSelectedItem] = useState(0);
 
   const animatedStyles = useAnimatedStyle(() => {
@@ -51,25 +54,32 @@ const DeliverySelectionScreen = () => {
             <TouchableOpacity
               className="flex-row mb-7"
               key={place.id}
-              onPress={() => setSelectedItem(place.id)}
+              onPress={() => setSelectedItem(place)}
             >
-              <View
-                className={`w-5 h-5 border border-[#F15E3B] rounded-full mr-2 ${
-                  selectedItem == place.id ? "bg-[#F15E3B]" : "bg-white"
-                }`}
-              ></View>
+              <View className="w-6 h-6 border border-[#F15E3B] bg-white rounded-full mr-2 items-center justify-center">
+                <View
+                  className={`w-3.5 h-3.5 rounded-full ${
+                    selectedItem.id == place.id ? "bg-[#F15E3B]" : "bg-white"
+                  }`}
+                ></View>
+              </View>
               <View>
                 <Text className="font-[Poppins-SemiBold] text-base leading-5">
-                  {place.name}
+                  {place.title}
                 </Text>
                 <Text className="font-[Poppins-Regular] text-xs text-[#8C8C8C] leading-4">
-                  {place.address}
+                  {place.description}
                 </Text>
               </View>
             </TouchableOpacity>
           );
         })}
-        <TouchableOpacity className="mt-3">
+        <TouchableOpacity
+          className="mt-3"
+          onPress={() =>
+            navigation.navigate("MapScreen", { data: selectedItem })
+          }
+        >
           <Text className="font-[Poppins-Bold] text-base text-center text-[#F15E3B]">
             Zobacz wszystkie punkty na mapie
           </Text>

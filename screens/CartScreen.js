@@ -24,9 +24,19 @@ const CartScreen = ({ navigation }) => {
   const dispatch = useDispatch();
 
   const [isRemoved, setIsRemoved] = useState(false);
+  const [isEmpty, setIsEmpty] = useState(true);
+
   const width = Dimensions.get("window").width;
 
   const [timeoutID, setTimeoutId] = useState(null);
+
+  useEffect(() => {
+    if (items.length == 0) {
+      setIsEmpty(true);
+    } else {
+      setIsEmpty(false);
+    }
+  }, [items]);
 
   function remove() {
     clearTimeout(timeoutID);
@@ -59,6 +69,9 @@ const CartScreen = ({ navigation }) => {
         {
           translateX: !isRemoved ? withSpring(-width) : withSpring(0),
         },
+        {
+          translateY: isEmpty ? 0 : -60,
+        },
       ],
     };
   });
@@ -66,7 +79,7 @@ const CartScreen = ({ navigation }) => {
   return (
     <View className="flex-1 bg-[#343434]">
       <Header title="Koszyk" />
-      {items.length > 0 ? (
+      {!isEmpty ? (
         <>
           <ScrollView
             showsVerticalScrollIndicator={false}
@@ -92,7 +105,7 @@ const CartScreen = ({ navigation }) => {
       ) : (
         <ScrollView
           showsVerticalScrollIndicator={false}
-          className="flex-1 bg-white rounded-t-[15px] mt-[-15px]"
+          className="flex-1 bg-white rounded-t-[15px] "
         >
           <View className="justify-center items-center px-5 mt-[-50px]">
             <Lottie

@@ -13,6 +13,7 @@ import BookListByCategoryScreen from "./screens/BookListByCategoryScreen";
 import DeliverySelectionScreen from "./screens/DeliverySelectionScreen";
 import { Provider } from "react-redux";
 import store from "./store";
+import MapScreen from "./screens/MapScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -23,12 +24,7 @@ export default function App() {
     "Poppins-Bold": require("./assets/fonts/Poppins-Bold.ttf"),
   });
 
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded) {
-      console.log("zaladowano");
-      console.log(fontsLoaded);
-    }
-  }, [fontsLoaded]);
+  const onLayoutRootView = useCallback(async () => {}, [fontsLoaded]);
 
   if (!fontsLoaded) {
     return null;
@@ -64,6 +60,13 @@ export default function App() {
             <Stack.Screen
               name="DeliverySelectionScreen"
               component={DeliverySelectionScreen}
+            />
+            <Stack.Screen
+              name="MapScreen"
+              component={MapScreen}
+              options={{
+                presentation: "transparentModal",
+              }}
             />
           </Stack.Navigator>
         </Provider>
