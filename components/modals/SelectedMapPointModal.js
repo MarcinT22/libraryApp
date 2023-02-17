@@ -5,13 +5,23 @@ import Animated, {
   withSpring,
   withTiming,
 } from "react-native-reanimated";
+import { useDispatch } from "react-redux";
+import { setDeliveryPoint } from "../../slices/cartSlice";
+import { useNavigation } from "@react-navigation/native";
 
 const SelectedMapPointModal = ({ data }) => {
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
+  function selectPoint() {
+    dispatch(setDeliveryPoint(data));
+    navigation.goBack();
+  }
+
   const animatedStyles = useAnimatedStyle(() => {
     return {
       transform: [
         {
-          translateY: data ? withTiming(0) : withTiming(300),
+          translateY: data.id ? withTiming(0) : withTiming(300),
         },
       ],
     };
@@ -40,7 +50,12 @@ const SelectedMapPointModal = ({ data }) => {
           </Text>
         </View>
       </View>
-      <TouchableOpacity className="py-3 bg-[#F15E3B] rounded-[10px] ">
+      <TouchableOpacity
+        onPress={() => {
+          selectPoint();
+        }}
+        className="py-3 bg-[#F15E3B] rounded-[10px] "
+      >
         <Text className="text-center text-white font-[Poppins-Bold] text-lg uppercase ">
           Wybieram ten punkt
         </Text>

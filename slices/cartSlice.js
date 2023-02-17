@@ -45,7 +45,7 @@ export const cartSlice = createSlice({
     },
 
     setDeliveryPoint: (state, action) => {
-      state.deliveryPoint = JSON.stringify(action.payload);
+      state.deliveryPoint = action.payload;
     },
   },
 });
@@ -58,5 +58,6 @@ export const {
 } = cartSlice.actions;
 
 export const selectCartItems = (state) => state.cart.items;
+export const selectDeliveryPoint = (state) => state.cart.deliveryPoint;
 
 export default cartSlice.reducer;

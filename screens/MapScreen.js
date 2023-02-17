@@ -1,20 +1,22 @@
-import { View, Text, Image } from "react-native";
+import { View, Image } from "react-native";
 import React, { useState } from "react";
 import Header from "../components/Header";
 import MapView from "react-native-maps";
 import { Marker } from "react-native-maps";
 import SelectedMapPointModal from "../components/modals/SelectedMapPointModal";
-import { useRoute } from "@react-navigation/native";
+
 import { places } from "../data/places";
+import { useSelector } from "react-redux";
+import { selectDeliveryPoint } from "../slices/cartSlice";
 
 const MapScreen = () => {
-  const {
-    params: { data },
-  } = useRoute();
+  const selectedPoint = useSelector(selectDeliveryPoint);
 
-  const [selectedPoint, setSelectedPoint] = useState(data);
+  const [point, setPoint] = useState(selectedPoint);
 
-  const [markers, setMarkers] = useState(places);
+  function selectPoint(point) {
+    setPoint(point);
+  }
 
   return (
     <View className="flex-1 ">
@@ -30,7 +32,7 @@ const MapScreen = () => {
           }}
           toolbarEnabled={false}
         >
-          {markers.map((marker, index) => (
+          {places.map((marker, index) => (
             <Marker
               key={index}
               coordinate={{
@@ -38,12 +40,12 @@ const MapScreen = () => {
                 longitude: marker.longitude,
               }}
               onPress={() => {
-                setSelectedPoint(marker);
+                selectPoint(marker);
               }}
             >
               <Image
                 source={
-                  selectedPoint.id == marker.id
+                  point.id == marker.id
                     ? require("../assets/marker-active.png")
                     : require("../assets/marker.png")
                 }
@@ -54,7 +56,7 @@ const MapScreen = () => {
           ))}
         </MapView>
       </View>
-      <SelectedMapPointModal data={selectedPoint} />
+      <SelectedMapPointModal data={point} />
     </View>
   );
 };

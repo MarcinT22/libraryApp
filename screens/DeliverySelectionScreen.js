@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import { ScrollView } from "react-native-gesture-handler";
 import Animated, {
@@ -8,17 +8,18 @@ import Animated, {
 } from "react-native-reanimated";
 
 import { useNavigation } from "@react-navigation/native";
-import { useDispatch } from "react-redux";
-import { setDeliveryPoint } from "../slices/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { selectDeliveryPoint, setDeliveryPoint } from "../slices/cartSlice";
 import { places } from "../data/places";
 
 const DeliverySelectionScreen = () => {
   const navigation = useNavigation();
-  const [selectedItem, setSelectedItem] = useState(0);
+
+  const selectedPoint = useSelector(selectDeliveryPoint);
+
   const dispatch = useDispatch();
 
   function selectItem(place) {
-    setSelectedItem(place);
     dispatch(setDeliveryPoint(place));
   }
 
@@ -26,7 +27,7 @@ const DeliverySelectionScreen = () => {
     return {
       transform: [
         {
-          translateY: selectedItem ? withSpring(0) : withSpring(100),
+          translateY: selectedPoint.id ? withSpring(0) : withSpring(100),
         },
       ],
     };
@@ -50,7 +51,7 @@ const DeliverySelectionScreen = () => {
               <View className="w-6 h-6 border border-[#F15E3B] bg-white rounded-full mr-2 items-center justify-center">
                 <View
                   className={`w-3.5 h-3.5 rounded-full ${
-                    selectedItem.id == place.id ? "bg-[#F15E3B]" : "bg-white"
+                    selectedPoint.id == place.id ? "bg-[#F15E3B]" : "bg-white"
                   }`}
                 ></View>
               </View>
@@ -67,9 +68,7 @@ const DeliverySelectionScreen = () => {
         })}
         <TouchableOpacity
           className="mt-3"
-          onPress={() =>
-            navigation.navigate("MapScreen", { data: selectedItem })
-          }
+          onPress={() => navigation.navigate("MapScreen")}
         >
           <Text className="font-[Poppins-Bold] text-base text-center text-[#F15E3B]">
             Zobacz wszystkie punkty na mapie
