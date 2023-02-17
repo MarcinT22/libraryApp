@@ -8,28 +8,19 @@ import Animated, {
 } from "react-native-reanimated";
 
 import { useNavigation } from "@react-navigation/native";
-
-const places = [
-  {
-    id: 1,
-    title: "BM Skoczów - P01",
-    description: "Skoczów, ul. Wałowa 3",
-  },
-  {
-    id: 2,
-    title: "BM Skoczów - P02",
-    description: "Skoczów, Gleria Pledan, ul. Fabryczna 9",
-  },
-  {
-    id: 3,
-    title: "BM Skoczów - P03",
-    description: "Skoczów, SP3, ul. Osiedlowa 1",
-  },
-];
+import { useDispatch } from "react-redux";
+import { setDeliveryPoint } from "../slices/cartSlice";
+import { places } from "../data/places";
 
 const DeliverySelectionScreen = () => {
   const navigation = useNavigation();
   const [selectedItem, setSelectedItem] = useState(0);
+  const dispatch = useDispatch();
+
+  function selectItem(place) {
+    setSelectedItem(place);
+    dispatch(setDeliveryPoint(place));
+  }
 
   const animatedStyles = useAnimatedStyle(() => {
     return {
@@ -54,7 +45,7 @@ const DeliverySelectionScreen = () => {
             <TouchableOpacity
               className="flex-row mb-7"
               key={place.id}
-              onPress={() => setSelectedItem(place)}
+              onPress={() => selectItem(place)}
             >
               <View className="w-6 h-6 border border-[#F15E3B] bg-white rounded-full mr-2 items-center justify-center">
                 <View
