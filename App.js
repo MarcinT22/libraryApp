@@ -31,7 +31,7 @@ export default function App() {
   }
 
   return (
-    <View className="flex-1 bg-[#343434] ">
+    <SafeAreaView className="flex-1 bg-[#343434] ">
       <StatusBar style="light" backgroundColor="#343434" translucent={false} />
       <NavigationContainer>
         <Provider store={store}>
@@ -71,6 +71,6 @@ export default function App() {
           </Stack.Navigator>
         </Provider>
       </NavigationContainer>
-    </View>
+    </SafeAreaView>
   );
 }

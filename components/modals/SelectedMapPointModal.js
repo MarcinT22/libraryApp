@@ -33,7 +33,7 @@ const SelectedMapPointModal = ({ data }) => {
       style={animatedStyles}
     >
       <View className="flex-row items-center pt-2 pb-7">
-        <View className="w-1/5 items-center">
+        <View className="w-1/5 items-center ">
           <Image
             source={require("../../assets/marker-active.png")}
             resizeMode="contain"
