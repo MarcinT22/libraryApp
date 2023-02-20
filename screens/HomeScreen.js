@@ -20,7 +20,7 @@ const HomeScreen = () => {
   }, []);
 
   return (
-    <View className="flex-1 bg-[#343434]">
+    <View className="flex-1 bg-[#343434] pt-5">
       {!isLoading ? (
         <View>
           <ScrollView
@@ -32,7 +32,7 @@ const HomeScreen = () => {
                 <SearchButton dark={true} />
               </View>
               <View>
-                <Text className="color-white text-lg font-[Poppins-Bold] my-4 px-5">
+                <Text className="text-white text-lg font-[Poppins-Bold] my-4 px-5">
                   Kategorie książek
                 </Text>
                 <CategoryList data={categories} />

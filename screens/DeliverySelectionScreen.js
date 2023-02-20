@@ -78,7 +78,10 @@ const DeliverySelectionScreen = () => {
 
       <View className="bg-white px-5 pb-4 pt-4">
         <Animated.View style={animatedStyles}>
-          <TouchableOpacity className="py-3 bg-[#F15E3B] rounded-[10px] ">
+          <TouchableOpacity
+            className="py-3 bg-[#F15E3B] rounded-[10px]"
+            onPress={() => navigation.navigate("SummaryScreen")}
+          >
             <Text className="text-center text-white font-[Poppins-Bold] text-lg uppercase ">
               Przejdź do podsumowania
             </Text>

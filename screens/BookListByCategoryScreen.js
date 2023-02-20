@@ -23,13 +23,13 @@ const BookListByCategoryScreen = ({ navigation }) => {
   const booksByCategory = books.filter((item) => item.category == data.title);
 
   return (
-    <View className="flex-1 bg-[#343434]">
+    <View className="flex-1 bg-[#343434] ">
       <Header title={data.title} />
       <ScrollView
         showsVerticalScrollIndicator={false}
         className="flex-1 bg-white rounded-t-[15px]"
       >
-        <View className="flex-1   relative z-10 p-5 pb-0 ">
+        <View className="p-5 pb-0 ">
           <SearchButton />
           <View className="border-b border-[#ECECEC] pb-2 mt-3">
             <TouchableOpacity

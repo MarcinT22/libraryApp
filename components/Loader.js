@@ -11,7 +11,7 @@ const Loader = () => {
         className="mt-[-40px]"
       />
 
-      <Text className="color-white text-sm text-center font-[Poppins-Regular] mt-20">
+      <Text className="text-white text-sm text-center font-[Poppins-Regular] mt-20">
         Wczytywanie książek...
       </Text>
     </View>

@@ -14,6 +14,9 @@ import DeliverySelectionScreen from "./screens/DeliverySelectionScreen";
 import { Provider } from "react-redux";
 import store from "./store";
 import MapScreen from "./screens/MapScreen";
+import SummaryScreen from "./screens/SummaryScreen";
+import ThankScreen from "./screens/ThankScreen";
+import OrderDetailsScreen from "./screens/OrderDetailsScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -32,7 +35,7 @@ export default function App() {
 
   return (
     <SafeAreaView className="flex-1 bg-[#343434] ">
-      <StatusBar style="light" backgroundColor="#343434" translucent={false} />
+      <StatusBar style="light" backgroundColor="rgba(0,0,0,0)" />
       <NavigationContainer>
         <Provider store={store}>
           <Stack.Navigator
@@ -67,6 +70,12 @@ export default function App() {
               options={{
                 presentation: "transparentModal",
               }}
+            />
+            <Stack.Screen name="SummaryScreen" component={SummaryScreen} />
+            <Stack.Screen name="ThankScreen" component={ThankScreen} />
+            <Stack.Screen
+              name="OrderDetailsScreen"
+              component={OrderDetailsScreen}
             />
           </Stack.Navigator>
         </Provider>

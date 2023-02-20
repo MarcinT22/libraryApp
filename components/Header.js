@@ -5,7 +5,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 const Header = ({ title }) => {
   const navigation = useNavigation();
   return (
-    <View className="relative  px-5 bg-[#343434]  pb-1">
+    <View className="relative  px-4 bg-[#343434]  pb-1 pt-5">
       <View className="flex-row items-center justify-center">
         <TouchableOpacity
           className="absolute left-0"
@@ -13,7 +13,7 @@ const Header = ({ title }) => {
         >
           <MaterialCommunityIcons name="arrow-left" color="#fff" size={30} />
         </TouchableOpacity>
-        <Text className="color-white text-lg font-[Poppins-Bold] my-4 text-center">
+        <Text className="text-white text-lg font-[Poppins-Bold] my-4 text-center">
           {title}
         </Text>
       </View>

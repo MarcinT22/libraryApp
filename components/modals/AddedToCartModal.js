@@ -20,8 +20,6 @@ const AddedToCartModal = ({ data, visible, setVisibleModal }) => {
       animationType="slide"
       onRequestClose={() => setVisibleModal(false)}
     >
-      {visible && <StatusBar backgroundColor="rgba(0,0,0,0.9)" />}
-
       <View className="flex-1 justify-end">
         <View className="p-5 pb-3 bg-white rounded-t-[15px]">
           <View className="flex-row justify-between items-center">
@@ -44,13 +42,13 @@ const AddedToCartModal = ({ data, visible, setVisibleModal }) => {
                 />
               </View>
               <View className="w-2/3 px-4">
-                <Text className="text-xs color-black font-[Poppins-Regular]">
+                <Text className="text-xs text-black font-[Poppins-Regular]">
                   {data.category}
                 </Text>
-                <Text className="text-base font-[Poppins-SemiBold] leading-4 pt-1 color-black">
+                <Text className="text-base font-[Poppins-SemiBold] leading-4 pt-1 text-black">
                   {data.title}
                 </Text>
-                <Text className="text-sm color-[#8C8C8C] font-[Poppins-Regular] leading-4 pt-1">
+                <Text className="text-sm text-[#8C8C8C] font-[Poppins-Regular] leading-4 pt-1">
                   {data.author}
                 </Text>
               </View>
@@ -69,7 +67,7 @@ const AddedToCartModal = ({ data, visible, setVisibleModal }) => {
                     size={22}
                   />
                 </View>
-                <Text className="font-[Poppins-Bold] text-sm color-white uppercase ml-7">
+                <Text className="font-[Poppins-Bold] text-sm text-white uppercase ml-7">
                   Powrót
                 </Text>
               </TouchableOpacity>
@@ -79,7 +77,7 @@ const AddedToCartModal = ({ data, visible, setVisibleModal }) => {
                 onPress={() => navigation.navigate("Cart")}
                 className="p-2 rounded-[10px] bg-[#F15E3B]"
               >
-                <Text className="font-[Poppins-Bold] text-sm color-white text-center uppercase">
+                <Text className="font-[Poppins-Bold] text-sm text-white text-center uppercase">
                   Przejdź do koszyka
                 </Text>
               </TouchableOpacity>

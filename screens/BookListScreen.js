@@ -9,14 +9,14 @@ import { books } from "../data/books";
 import SearchButton from "../components/SearchButton";
 const BookListScreen = () => {
   return (
-    <View className="flex-1 bg-[#343434]">
+    <View className="flex-1 bg-[#343434] pt-5">
       <ScrollView
         stickyHeaderIndices={[0]}
         showsVerticalScrollIndicator={false}
       >
         <View className=" relative z-0">
           <View>
-            <Text className="color-white text-lg font-[Poppins-Bold] my-4 text-center">
+            <Text className="text-white text-lg font-[Poppins-Bold] my-4 text-center">
               Kategorie książek
             </Text>
             <CategoryList data={categories} />

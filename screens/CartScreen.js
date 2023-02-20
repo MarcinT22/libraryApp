@@ -118,7 +118,7 @@ const CartScreen = ({ navigation }) => {
             </Text>
           </View>
           <View className="mt-8 pb-16">
-            <Text className="text-lg mx-5 color-black font-[Poppins-Bold] leading-5 pt-2 mb-4">
+            <Text className="text-lg mx-5 text-black font-[Poppins-Bold] leading-5 pt-2 mb-4">
               Może zainteresują Cię te pozycje:
             </Text>
             <BookList data={books.reverse().slice(0, 10)} />

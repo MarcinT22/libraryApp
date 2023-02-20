@@ -12,6 +12,7 @@ import { useNavigation } from "@react-navigation/native";
 import CartScreen from "../screens/CartScreen";
 import { selectCartItems } from "../slices/cartSlice";
 import { useSelector } from "react-redux";
+import AuthUserScreen from "../screens/AuthUserScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -105,6 +106,20 @@ const BottomTabsNavigator = () => {
               name="cart-outline"
               color={color}
               size={25}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Account"
+        component={AuthUserScreen}
+        options={{
+          title: "Konto",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name="account-outline"
+              color={color}
+              size={30}
             />
           ),
         }}

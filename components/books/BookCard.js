@@ -19,17 +19,17 @@ export default function BookCard({ data, news }) {
         />
       </View>
       <View className="w-2/3 px-4">
-        <Text className="text-xs color-black font-[Poppins-Regular]">
+        <Text className="text-xs text-black font-[Poppins-Regular]">
           {data.category}
         </Text>
         <Text
           className={`${
-            news ? "color-[#F15E3B]" : "color-black"
+            news ? "text-[#F15E3B]" : "text-black"
           } text-base font-[Poppins-SemiBold] leading-4 pt-1`}
         >
           {data.title}
         </Text>
-        <Text className="text-sm color-[#8C8C8C] font-[Poppins-Regular] leading-4 pt-1">
+        <Text className="text-sm text-[#8C8C8C] font-[Poppins-Regular] leading-4 pt-1">
           {data.author}
         </Text>
       </View>
