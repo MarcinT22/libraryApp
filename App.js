@@ -17,6 +17,8 @@ import MapScreen from "./screens/MapScreen";
 import SummaryScreen from "./screens/SummaryScreen";
 import ThankScreen from "./screens/ThankScreen";
 import OrderDetailsScreen from "./screens/OrderDetailsScreen";
+import LoginScreen from "./screens/LoginScreen";
+import RegisterScreen from "./screens/RegisterScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -77,6 +79,14 @@ export default function App() {
               name="OrderDetailsScreen"
               component={OrderDetailsScreen}
             />
+            <Stack.Group
+              screenOptions={{
+                animation: "slide_from_right",
+              }}
+            >
+              <Stack.Screen name="LoginScreen" component={LoginScreen} />
+              <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+            </Stack.Group>
           </Stack.Navigator>
         </Provider>
       </NavigationContainer>

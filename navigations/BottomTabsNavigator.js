@@ -13,6 +13,7 @@ import CartScreen from "../screens/CartScreen";
 import { selectCartItems } from "../slices/cartSlice";
 import { useSelector } from "react-redux";
 import AuthUserScreen from "../screens/AuthUserScreen";
+import Account from "../screens/Account";
 
 const Tab = createBottomTabNavigator();
 
@@ -112,7 +113,7 @@ const BottomTabsNavigator = () => {
       />
       <Tab.Screen
         name="Account"
-        component={AuthUserScreen}
+        component={Account}
         options={{
           title: "Konto",
           tabBarIcon: ({ color }) => (

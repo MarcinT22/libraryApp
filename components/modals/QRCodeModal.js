@@ -4,7 +4,12 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import QRCode from "react-native-qrcode-svg";
 const QRCodeModal = ({ isVisible, setIsVisible, value }) => {
   return (
-    <Modal visible={isVisible} transparent={true} animationType="slide">
+    <Modal
+      visible={isVisible}
+      transparent={true}
+      animationType="slide"
+      onRequestClose={() => setIsVisible(false)}
+    >
       <View className="flex-1 bg-white rounded-t-[15px] p-4">
         <TouchableOpacity onPress={() => setIsVisible(false)}>
           <MaterialCommunityIcons name="arrow-left" color="#343434" size={30} />
