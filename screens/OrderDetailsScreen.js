@@ -1,79 +1,40 @@
-import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
-import React, { useState } from "react";
+import {
+  View,
+  Text,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+  BackHandler,
+} from "react-native";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import QRCode from "react-native-qrcode-svg";
 import QRCodeModal from "../components/modals/QRCodeModal";
+import OrderedBookCard from "../components/books/OrderedBookCard";
+import { books } from "../data/books";
+import { useNavigation } from "@react-navigation/native";
 
 const OrderDetailsScreen = () => {
+  const navigation = useNavigation();
+
   const [status, setStatus] = useState(true);
   const [zoomQR, setZoomQr] = useState(false);
 
-  const [valueQR, setValueQR] = useState("43234");
+  const [valueQR, setValueQR] = useState("753159");
 
   const BookList = () => (
     <>
       <Text className="font-[Poppins-Bold] text-xs uppercase text-[#8C8C8C] mt-5">
         Zamówione książki:
       </Text>
-      <View className="border-b border-[#ECECEC] py-3">
-        <View className="flex-row items-center">
-          <View className="w-1/5">
-            <Image
-              className="w-16 h-20 rounded-[5px]"
-              source={{
-                uri: "https://ecsmedia.pl/c/jak-mniej-myslec-dla-analizujacych-bez-konca-i-wysoko-wrazliwych-w-iext121406099.jpg",
-              }}
-            />
+
+      {books.slice(0, 2).map((book) => {
+        return (
+          <View className="border-b border-[#ECECEC] py-3" key={book.id}>
+            <OrderedBookCard data={book} />
           </View>
-          <View className="w-4/5 ml-3 ">
-            <View className="pr-16">
-              <Text
-                numberOfLines={2}
-                className="font-[Poppins-SemiBold] text-sm text-black leading-4 pt-1"
-              >
-                Jak mniej myśleć. Dla analizujących bez końca i wysoko
-                wrażliwych
-              </Text>
-              <Text
-                numberOfLines={1}
-                className="text-xs font-[Poppins-Regular] text-[#8C8C8C]"
-              >
-                Petitcollin Christel
-              </Text>
-            </View>
-          </View>
-        </View>
-      </View>
-      <View className="border-b border-[#ECECEC] py-3">
-        <View className="flex-row items-center">
-          <View className="w-1/5">
-            <Image
-              className="w-16 h-20 rounded-[5px]"
-              source={{
-                uri: "https://ecsmedia.pl/c/mozg-bez-ograniczen-potwierdzone-naukowo-metody-dzieki-ktorym-nauczysz-sie-szybkiego-czytania-usprawnisz-pamiec-zwiekszysz-koncentracje-i-aktywujesz-supermoce-swojego-mozgu-w-iext115614787.jpg",
-              }}
-            />
-          </View>
-          <View className="w-4/5 ml-3 ">
-            <View className="pr-16">
-              <Text
-                numberOfLines={2}
-                className="font-[Poppins-SemiBold] text-sm text-black leading-4 pt-1"
-              >
-                Mózg bez ograniczeń. Potwierdzone naukowo metody, dzięki którym
-                nauczysz się szybkiego czytania, usprawnisz pamięć, zwiększysz
-                koncentrację i… aktywujesz supermoce swojego mózgu
-              </Text>
-              <Text
-                numberOfLines={1}
-                className="text-xs font-[Poppins-Regular] text-[#8C8C8C]"
-              >
-                Kwik Jim
-              </Text>
-            </View>
-          </View>
-        </View>
-      </View>
+        );
+      })}
     </>
   );
 
@@ -130,7 +91,7 @@ const OrderDetailsScreen = () => {
                     Kod odbioru:
                   </Text>
                   <Text className="text-black font-[Poppins-Bold] text-4xl mt-1">
-                    548956
+                    {valueQR}
                   </Text>
                   <Text className="text-black font-[Poppins-Bold] text-xs mt-2">
                     Odbierz zamówienie do:

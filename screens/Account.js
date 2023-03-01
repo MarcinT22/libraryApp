@@ -1,8 +1,10 @@
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import React from "react";
 import Header from "../components/Header";
+import { useNavigation } from "@react-navigation/native";
 
 const Account = () => {
+  const navigation = useNavigation();
   return (
     <View className="flex-1 bg-[#343434]">
       <Header title="Moje konto" goBack={false} />
@@ -16,7 +18,10 @@ const Account = () => {
             jan.kowalski@onet.pl
           </Text>
           <View className="border-t border-[#F5F5F5]">
-            <TouchableOpacity className=" px-5 py-4">
+            <TouchableOpacity
+              className=" px-5 py-4"
+              onPress={() => navigation.navigate("MyOrdersScreen")}
+            >
               <Text className="font-[Poppins-Regular] text-[#8C8C8C] text-base">
                 Moje zamówienia
               </Text>

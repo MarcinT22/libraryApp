@@ -7,7 +7,7 @@ import SearchResults from "../screens/SearchResults";
 
 const Stack = createNativeStackNavigator();
 
-const SearchNavigator = () => {
+const SearchNavigation = () => {
   return (
     <Stack.Navigator
       initialRouteName="Search"
@@ -22,4 +22,4 @@ const SearchNavigator = () => {
   );
 };
 
-export default SearchNavigator;
+export default SearchNavigation;

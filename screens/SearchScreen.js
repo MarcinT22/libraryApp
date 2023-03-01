@@ -31,7 +31,7 @@ const SearchScreen = ({ navigation }) => {
       const output = JSON.stringify(searchStorage.reverse());
       await AsyncStorage.setItem("searchStorage", output);
 
-      navigation.navigate("SearchNavigator", {
+      navigation.navigate("SearchNavigation", {
         screen: "SearchResults",
         initial: false,
         params: { textSearched: searchText },
@@ -123,7 +123,7 @@ const SearchScreen = ({ navigation }) => {
                     <TouchableOpacity
                       className="flex-row items-center py-1.5"
                       onPress={() =>
-                        navigation.navigate("SearchNavigator", {
+                        navigation.navigate("SearchNavigation", {
                           screen: "SearchResults",
                           initial: false,
                           params: { textSearched: item },

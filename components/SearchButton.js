@@ -12,7 +12,7 @@ const SearchButton = ({ dark, textSearched }) => {
         dark ? "bg-[#292929]" : "bg-[#EAEAEA]"
       } h-12 rounded-[30px] px-4`}
       onPress={() =>
-        navigation.navigate("SearchNavigator", {
+        navigation.navigate("SearchNavigation", {
           screen: "Search",
         })
       }

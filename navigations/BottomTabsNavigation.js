@@ -7,7 +7,7 @@ import HomeScreen from "../screens/HomeScreen";
 
 import BookListScreen from "../screens/BookListScreen";
 import SearchScreen from "../screens/SearchScreen";
-import SearchNavigator from "./SearchNavigator";
+import SearchNavigation from "./SearchNavigation";
 import { useNavigation } from "@react-navigation/native";
 import CartScreen from "../screens/CartScreen";
 import { selectCartItems } from "../slices/cartSlice";
@@ -17,7 +17,7 @@ import Account from "../screens/Account";
 
 const Tab = createBottomTabNavigator();
 
-const BottomTabsNavigator = () => {
+const BottomTabsNavigation = () => {
   const items = useSelector(selectCartItems);
 
   const navigation = useNavigation();
@@ -63,8 +63,8 @@ const BottomTabsNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="SearchNavigator"
-        component={SearchNavigator}
+        name="SearchNavigation"
+        component={SearchNavigation}
         options={{
           title: "Szukaj",
           tabBarIcon: ({ color }) => (
@@ -73,7 +73,7 @@ const BottomTabsNavigator = () => {
         }}
         listeners={{
           tabPress: () => {
-            navigation.navigate("SearchNavigator", { screen: "Search" });
+            navigation.navigate("SearchNavigation", { screen: "Search" });
           },
         }}
       />
@@ -129,4 +129,4 @@ const BottomTabsNavigator = () => {
   );
 };
 
-export default BottomTabsNavigator;
+export default BottomTabsNavigation;

@@ -6,7 +6,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useFonts } from "expo-font";
 import { useCallback } from "react";
 
-import BottomTabsNavigator from "./navigations/BottomTabsNavigator";
+import BottomTabsNavigation from "./navigations/BottomTabsNavigation";
 import BookScreen from "./screens/BookScreen";
 import CategoriesScreen from "./screens/CategoriesScreen";
 import BookListByCategoryScreen from "./screens/BookListByCategoryScreen";
@@ -19,6 +19,8 @@ import ThankScreen from "./screens/ThankScreen";
 import OrderDetailsScreen from "./screens/OrderDetailsScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
+
+import MyOrdersScreen from "./screens/MyOrdersScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -47,7 +49,10 @@ export default function App() {
             }}
             initialRouteName="TabNavigator"
           >
-            <Stack.Screen name="TabNavigator" component={BottomTabsNavigator} />
+            <Stack.Screen
+              name="TabNavigator"
+              component={BottomTabsNavigation}
+            />
             <Stack.Screen
               name="BookScreen"
               component={BookScreen}
@@ -87,6 +92,7 @@ export default function App() {
               <Stack.Screen name="LoginScreen" component={LoginScreen} />
               <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
             </Stack.Group>
+            <Stack.Screen name="MyOrdersScreen" component={MyOrdersScreen} />
           </Stack.Navigator>
         </Provider>
       </NavigationContainer>
