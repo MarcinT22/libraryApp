@@ -38,32 +38,45 @@ const SummaryScreen = ({ route }) => {
           <Text className="font-[Poppins-Bold] text-lg text-black mt-5">
             {isReturned ? "Punkt zwrotu:" : "Punkt odbioru:"}
           </Text>
-          <View className="flex-row items-center pt-2 pb-7">
-            <View className="w-1/5 ">
-              <Image
-                source={require("../assets/marker-active.png")}
-                resizeMode="contain"
-                className="w-12 h-16"
-              />
-            </View>
-            <View className="w-4/5">
-              <Text className="font-[Poppins-SemiBold] text-base">
-                {deliveryPoint.title}
-              </Text>
+          {deliveryPoint.length != 0 ? (
+            <View className="flex-row items-center pt-2 pb-7">
+              <View className="w-1/5 ">
+                <Image
+                  source={require("../assets/marker-active.png")}
+                  resizeMode="contain"
+                  className="w-12 h-16"
+                />
+              </View>
+              <View className="w-4/5">
+                <Text className="font-[Poppins-SemiBold] text-base">
+                  {deliveryPoint.title}
+                </Text>
 
-              <Text className="font-[Poppins-Regular] text-xs text-[#8C8C8C]">
-                {deliveryPoint.description}
-              </Text>
+                <Text className="font-[Poppins-Regular] text-xs text-[#8C8C8C]">
+                  {deliveryPoint.description}
+                </Text>
+                <TouchableOpacity
+                  className="mt-1"
+                  onPress={() => navigation.navigate("DeliverySelectionScreen")}
+                >
+                  <Text className="uppercase text font-[Poppins-Bold] text-[#F15E3B]">
+                    Zmień
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          ) : (
+            <View>
               <TouchableOpacity
-                className="mt-1"
+                className="py-3 border border-[#F15E3B] rounded-[10px] mt-2"
                 onPress={() => navigation.navigate("DeliverySelectionScreen")}
               >
-                <Text className="uppercase text font-[Poppins-Bold] text-[#F15E3B]">
-                  Zmień
+                <Text className="text-center text-[#F15E3B] font-[Poppins-Bold] text-base uppercase ">
+                  Wybierz punkt
                 </Text>
               </TouchableOpacity>
             </View>
-          </View>
+          )}
         </View>
       </ScrollView>
       <View className="bg-white px-5 pb-4 pt-4">

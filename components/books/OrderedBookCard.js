@@ -1,7 +1,7 @@
 import { View, Text, Image } from "react-native";
 import React from "react";
 
-const OrderedBookCard = ({ data, status, deliveryDate }) => {
+const OrderedBookCard = ({ data, status, deliveryDate, returnedDate }) => {
   return (
     <View className="flex-row items-center">
       <View className="w-1/5">
@@ -15,10 +15,16 @@ const OrderedBookCard = ({ data, status, deliveryDate }) => {
       <View className="w-4/5 ml-3 ">
         <View
           className={`pr-16 flex-1  ${
-            status || deliveryDate ? "justify-between" : "justify-start"
+            status || deliveryDate || returnedDate
+              ? "justify-between"
+              : "justify-start"
           }`}
         >
-          <View className={`${!status && !deliveryDate ? "mt-2" : "mt-0"}`}>
+          <View
+            className={`${
+              !status && !deliveryDate && !returnedDate ? "mt-2" : "mt-0"
+            }`}
+          >
             <Text
               numberOfLines={2}
               className="font-[Poppins-SemiBold]   text-sm text-black leading-4 pt-1"
@@ -50,6 +56,11 @@ const OrderedBookCard = ({ data, status, deliveryDate }) => {
               <Text className="text-black text-sm text-[#F15E3B]">
                 {deliveryDate}
               </Text>
+            </Text>
+          )}
+          {returnedDate && (
+            <Text className=" text-[#8C8C8C] text-xs font-[Poppins-Regular]">
+              Zwrócono: {returnedDate}
             </Text>
           )}
         </View>
