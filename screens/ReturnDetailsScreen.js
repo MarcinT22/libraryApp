@@ -24,7 +24,7 @@ const ReturnDetailsScreen = () => {
 
   useEffect(() => {
     function handleBackButton() {
-      navigation.navigate("OrdersToBeReturned");
+      navigation.navigate("PendingOrdersScreen");
       return true;
     }
 

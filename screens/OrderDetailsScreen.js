@@ -14,9 +14,11 @@ import OrderedBookCard from "../components/books/OrderedBookCard";
 import { books } from "../data/books";
 import { useNavigation } from "@react-navigation/native";
 
-const OrderDetailsScreen = () => {
+const OrderDetailsScreen = ({ route }) => {
   const navigation = useNavigation();
-
+  const [isGoBack, setIsGoBack] = useState(
+    route.params ? route.params.goBack : true
+  );
   const [status, setStatus] = useState(true);
   const [zoomQR, setZoomQr] = useState(false);
 
@@ -66,7 +68,7 @@ const OrderDetailsScreen = () => {
 
   return (
     <View className="flex-1 bg-[#343434] ">
-      <Header title="Szczegóły zamówienia" />
+      <Header title="Szczegóły zamówienia" goBack={isGoBack} />
       <ScrollView
         showsVerticalScrollIndicator={false}
         className="flex-1 bg-white rounded-t-[15px]"
@@ -94,7 +96,7 @@ const OrderDetailsScreen = () => {
                     {valueQR}
                   </Text>
                   <Text className="text-black font-[Poppins-Bold] text-xs mt-2">
-                    Odbierz zamówienie do dnia:
+                    Odbierz książki do dnia:
                   </Text>
                   <Text className="text-black font-[Poppins-Bold] text-base">
                     21.02.2023

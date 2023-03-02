@@ -74,7 +74,7 @@ const AddedToCartModal = ({ data, visible, setVisibleModal }) => {
             </View>
             <View className="w-3/5 pl-3">
               <TouchableOpacity
-                onPress={() => navigation.navigate("Cart")}
+                onPress={() => navigation.navigate("CartScreen")}
                 className="p-2 rounded-[10px] bg-[#F15E3B]"
               >
                 <Text className="font-[Poppins-Bold] text-sm text-white text-center uppercase">

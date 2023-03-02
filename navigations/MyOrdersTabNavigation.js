@@ -10,7 +10,7 @@ const Tab = createMaterialTopTabNavigator();
 const MyOrdersTabNavigation = () => {
   return (
     <Tab.Navigator
-      initialRouteName="PendingOrders"
+      initialRouteName="PendingOrdersScreen"
       backBehavior="order"
       screenOptions={{
         tabBarLabelStyle: {
@@ -34,19 +34,19 @@ const MyOrdersTabNavigation = () => {
       }}
     >
       <Tab.Screen
-        name="PendingOrders"
+        name="PendingOrdersScreen"
         options={{
           title: "Oczekujące",
         }}
         component={PendingOrders}
       />
       <Tab.Screen
-        name="OrdersToBeReturned"
+        name="OrdersToBeReturnedScreen"
         options={{ title: "Do oddania" }}
         component={OrdersToBeReturned}
       />
       <Tab.Screen
-        name="OrdersArchive"
+        name="OrdersArchiveScreen"
         options={{ title: "Archiwum" }}
         component={OrdersArchive}
       />

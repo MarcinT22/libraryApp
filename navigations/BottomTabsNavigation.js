@@ -50,7 +50,7 @@ const BottomTabsNavigation = () => {
       }}
     >
       <Tab.Screen
-        name="Home"
+        name="HomeScreen"
         component={HomeScreen}
         options={{
           tabBarIcon: ({ color }) => (
@@ -78,7 +78,7 @@ const BottomTabsNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="BookList"
+        name="BookListScreen"
         component={BookListScreen}
         options={{
           title: "Książki",
@@ -92,7 +92,7 @@ const BottomTabsNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="Cart"
+        name="CartScreen"
         component={CartScreen}
         options={{
           title: "Koszyk",
@@ -112,7 +112,7 @@ const BottomTabsNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="Account"
+        name="AccountScreen"
         component={Account}
         options={{
           title: "Konto",

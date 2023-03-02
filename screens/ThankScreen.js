@@ -11,7 +11,17 @@ export default function ThankScreen() {
     setTimeout(() => {
       animation.current?.pause();
     }, 2100);
-  });
+
+    function handleBackButton() {
+      navigation.navigate("HomeScreen");
+      return true;
+    }
+
+    BackHandler.addEventListener("hardwareBackPress", handleBackButton);
+
+    return () =>
+      BackHandler.removeEventListener("hardwareBackPress", handleBackButton);
+  }, [navigation]);
 
   return (
     <>
@@ -35,7 +45,11 @@ export default function ThankScreen() {
       <View className="bg-white px-5 pb-4 pt-4">
         <TouchableOpacity
           className="py-3 bg-[#F15E3B] rounded-[10px]"
-          onPress={() => navigation.navigate("OrderDetailsScreen")}
+          onPress={() =>
+            navigation.navigate("OrderDetailsScreen", {
+              goBack: false,
+            })
+          }
         >
           <Text className="text-center text-white font-[Poppins-Bold] text-lg uppercase ">
             Szczegóły zamówienia
@@ -43,7 +57,7 @@ export default function ThankScreen() {
         </TouchableOpacity>
         <TouchableOpacity
           className="py-3  border border-[#F15E3B] rounded-[10px] mt-5"
-          onPress={() => navigation.navigate("Home")}
+          onPress={() => navigation.navigate("HomeScreen")}
         >
           <Text className="text-center text-[#F15E3B] font-[Poppins-Bold] text-lg uppercase ">
             OK

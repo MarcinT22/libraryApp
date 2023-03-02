@@ -16,8 +16,8 @@ const SearchNavigation = () => {
         animation: "fade",
       }}
     >
-      <Stack.Screen name="Search" component={SearchScreen} />
-      <Stack.Screen name="SearchResults" component={SearchResults} />
+      <Stack.Screen name="SearchScreen" component={SearchScreen} />
+      <Stack.Screen name="SearchResultsScreen" component={SearchResults} />
     </Stack.Navigator>
   );
 };
