@@ -7,16 +7,15 @@ import Animated, {
   withSpring,
 } from "react-native-reanimated";
 
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import { selectDeliveryPoint, setDeliveryPoint } from "../slices/cartSlice";
+
 import { places } from "../data/places";
+import { selectDeliveryPoint, setDeliveryPoint } from "../slices/deliverySlice";
 
 const DeliverySelectionScreen = () => {
   const navigation = useNavigation();
-
   const selectedPoint = useSelector(selectDeliveryPoint);
-
   const dispatch = useDispatch();
 
   function selectItem(place) {

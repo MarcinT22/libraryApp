@@ -21,6 +21,7 @@ import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 
 import MyOrdersScreen from "./screens/MyOrdersScreen";
+import ReturnDetailsScreen from "./screens/ReturnDetailsScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -62,7 +63,6 @@ export default function App() {
               name="BookListByCategoryScreen"
               component={BookListByCategoryScreen}
             />
-
             <Stack.Screen
               name="CategoriesScreen"
               component={CategoriesScreen}
@@ -83,6 +83,10 @@ export default function App() {
             <Stack.Screen
               name="OrderDetailsScreen"
               component={OrderDetailsScreen}
+            />
+            <Stack.Screen
+              name="ReturnDetailsScreen"
+              component={ReturnDetailsScreen}
             />
             <Stack.Group
               screenOptions={{

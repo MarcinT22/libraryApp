@@ -6,8 +6,9 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import { useDispatch } from "react-redux";
-import { setDeliveryPoint } from "../../slices/cartSlice";
+
 import { useNavigation } from "@react-navigation/native";
+import { setDeliveryPoint } from "../../slices/deliverySlice";
 
 const SelectedMapPointModal = ({ data }) => {
   const navigation = useNavigation();

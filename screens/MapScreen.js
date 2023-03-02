@@ -7,7 +7,7 @@ import SelectedMapPointModal from "../components/modals/SelectedMapPointModal";
 
 import { places } from "../data/places";
 import { useSelector } from "react-redux";
-import { selectDeliveryPoint } from "../slices/cartSlice";
+import { selectDeliveryPoint } from "../slices/deliverySlice";
 
 const MapScreen = () => {
   const selectedPoint = useSelector(selectDeliveryPoint);

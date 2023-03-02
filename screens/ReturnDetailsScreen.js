@@ -14,18 +14,30 @@ import OrderedBookCard from "../components/books/OrderedBookCard";
 import { books } from "../data/books";
 import { useNavigation } from "@react-navigation/native";
 
-const OrderDetailsScreen = () => {
+const ReturnDetailsScreen = () => {
   const navigation = useNavigation();
 
   const [status, setStatus] = useState(true);
   const [zoomQR, setZoomQr] = useState(false);
 
-  const [valueQR, setValueQR] = useState("753159");
+  const [valueQR, setValueQR] = useState("349761");
+
+  useEffect(() => {
+    function handleBackButton() {
+      navigation.navigate("OrdersToBeReturned");
+      return true;
+    }
+
+    BackHandler.addEventListener("hardwareBackPress", handleBackButton);
+
+    return () =>
+      BackHandler.removeEventListener("hardwareBackPress", handleBackButton);
+  }, [navigation]);
 
   const BookList = () => (
     <>
       <Text className="font-[Poppins-Bold] text-xs uppercase text-[#8C8C8C] mt-5">
-        Zamówione książki:
+        Książki do zwrotu:
       </Text>
 
       {books.slice(0, 2).map((book) => {
@@ -41,7 +53,7 @@ const OrderDetailsScreen = () => {
   const DeliveryPoint = () => (
     <>
       <Text className="font-[Poppins-Bold] text-xs uppercase text-[#8C8C8C] mt-5">
-        Punkt odbioru:
+        Punkt zwrotu:
       </Text>
       <View className="flex-row items-center pt-2 pb-7">
         <View className="w-1/5 ">
@@ -66,58 +78,38 @@ const OrderDetailsScreen = () => {
 
   return (
     <View className="flex-1 bg-[#343434] ">
-      <Header title="Szczegóły zamówienia" />
+      <Header title="Szczegóły zwrotu" goBack={false} />
       <ScrollView
         showsVerticalScrollIndicator={false}
         className="flex-1 bg-white rounded-t-[15px]"
       >
         <View className="p-5">
-          <Text className="font-[Poppins-Bold] text-xs uppercase text-[#8C8C8C]">
-            Status:
-          </Text>
-          <Text
-            className={`font-[Poppins-Bold] text-lg ${
-              status ? "text-[#F15E3B]" : "text-black"
-            }`}
-          >
-            {status ? "Gotowe do odbioru" : "W trakcie realizacji"}
-          </Text>
-
-          {status ? (
-            <>
-              <View className="flex-row items-center justify-between mt-2">
-                <View className="w-1/2">
-                  <Text className="text-[#8C8C8C] font-[Poppins-Bold] text-base uppercase">
-                    Kod odbioru:
-                  </Text>
-                  <Text className="text-black font-[Poppins-Bold] text-4xl mt-1">
-                    {valueQR}
-                  </Text>
-                  <Text className="text-black font-[Poppins-Bold] text-xs mt-2">
-                    Odbierz zamówienie do dnia:
-                  </Text>
-                  <Text className="text-black font-[Poppins-Bold] text-base">
-                    21.02.2023
-                  </Text>
-                </View>
-                <View className="w-1/2 items-end">
-                  <TouchableOpacity onPress={() => setZoomQr(true)}>
-                    <QRCode value={valueQR} size={144} />
-                    <Text className="font-[Poppins-SemiBold] text-xs mt-1">
-                      Dotknij, aby powiększyć
-                    </Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-              <DeliveryPoint />
-              <BookList />
-            </>
-          ) : (
-            <>
-              <BookList />
-              <DeliveryPoint />
-            </>
-          )}
+          <View className="flex-row items-center justify-between mt-2">
+            <View className="w-1/2">
+              <Text className="text-[#8C8C8C] font-[Poppins-Bold] text-base uppercase">
+                Kod zwrotu:
+              </Text>
+              <Text className="text-black font-[Poppins-Bold] text-4xl mt-1">
+                {valueQR}
+              </Text>
+              <Text className="text-black font-[Poppins-Bold] text-xs mt-2">
+                Oddaj książki do dnia:
+              </Text>
+              <Text className="text-black font-[Poppins-Bold] text-base">
+                21.02.2023
+              </Text>
+            </View>
+            <View className="w-1/2 items-end">
+              <TouchableOpacity onPress={() => setZoomQr(true)}>
+                <QRCode value={valueQR} size={144} />
+                <Text className="font-[Poppins-SemiBold] text-xs mt-1">
+                  Dotknij, aby powiększyć
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          <DeliveryPoint />
+          <BookList />
         </View>
       </ScrollView>
       <QRCodeModal
@@ -129,4 +121,4 @@ const OrderDetailsScreen = () => {
   );
 };
 
-export default OrderDetailsScreen;
+export default ReturnDetailsScreen;

@@ -1,15 +1,21 @@
 import { View, ScrollView, Text, TouchableOpacity, Image } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import Header from "../components/Header";
 import { useSelector } from "react-redux";
-import { selectCartItems, selectDeliveryPoint } from "../slices/cartSlice";
-import { useNavigation } from "@react-navigation/native";
+import { selectCartItems } from "../slices/cartSlice";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import OrderedBookCard from "../components/books/OrderedBookCard";
+import { selectDeliveryPoint } from "../slices/deliverySlice";
 
-const SummaryScreen = () => {
+const SummaryScreen = ({ route }) => {
   const navigation = useNavigation();
   const items = useSelector(selectCartItems);
   const deliveryPoint = useSelector(selectDeliveryPoint);
+
+  const [isReturned, setIsReturned] = useState(route.params ? true : false);
+  const [books, setBooks] = useState(
+    route.params ? route.params.returnedBooks : items
+  );
 
   return (
     <View className="flex-1 bg-[#343434] ">
@@ -20,17 +26,17 @@ const SummaryScreen = () => {
       >
         <View className="p-5">
           <Text className="font-[Poppins-Bold] text-lg text-black">
-            Wybrane książki:
+            {isReturned ? "Książki do zwrotu:" : "Wybrane książki:"}
           </Text>
 
-          {items.map((data) => (
+          {books.map((data) => (
             <View className="border-b border-[#ECECEC] py-3" key={data.id}>
               <OrderedBookCard data={data} />
             </View>
           ))}
 
           <Text className="font-[Poppins-Bold] text-lg text-black mt-5">
-            Punkt odbioru:
+            {isReturned ? "Punkt zwrotu:" : "Punkt odbioru:"}
           </Text>
           <View className="flex-row items-center pt-2 pb-7">
             <View className="w-1/5 ">
@@ -48,6 +54,14 @@ const SummaryScreen = () => {
               <Text className="font-[Poppins-Regular] text-xs text-[#8C8C8C]">
                 {deliveryPoint.description}
               </Text>
+              <TouchableOpacity
+                className="mt-1"
+                onPress={() => navigation.navigate("DeliverySelectionScreen")}
+              >
+                <Text className="uppercase text font-[Poppins-Bold] text-[#F15E3B]">
+                  Zmień
+                </Text>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
@@ -55,10 +69,14 @@ const SummaryScreen = () => {
       <View className="bg-white px-5 pb-4 pt-4">
         <TouchableOpacity
           className="py-3 bg-[#F15E3B] rounded-[10px]"
-          onPress={() => navigation.navigate("ThankScreen")}
+          onPress={() =>
+            isReturned
+              ? navigation.navigate("ReturnDetailsScreen")
+              : navigation.navigate("ThankScreen")
+          }
         >
           <Text className="text-center text-white font-[Poppins-Bold] text-lg uppercase ">
-            Wypożyczam
+            {isReturned ? "Generuj kod zwrotu" : "Wypożyczam"}
           </Text>
         </TouchableOpacity>
       </View>

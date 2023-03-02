@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, BackHandler } from "react-native";
 import React, { useEffect, useRef } from "react";
 import Lottie from "lottie-react-native";
 import { useNavigation } from "@react-navigation/native";

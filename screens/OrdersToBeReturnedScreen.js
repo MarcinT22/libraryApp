@@ -7,7 +7,9 @@ import Animated, {
   useAnimatedStyle,
   withSpring,
 } from "react-native-reanimated";
+import { useNavigation } from "@react-navigation/native";
 const OrdersToBeReturnedScreen = () => {
+  const navigation = useNavigation();
   const [selectedBooks, setSelectedBooks] = useState([]);
 
   function isSelected(book) {
@@ -61,7 +63,11 @@ const OrdersToBeReturnedScreen = () => {
           <TouchableOpacity
             disabled={selectedBooks.length == 0}
             className="py-3 bg-[#F15E3B] rounded-[10px]"
-            onPress={() => alert("test")}
+            onPress={() =>
+              navigation.navigate("SummaryScreen", {
+                returnedBooks: selectedBooks,
+              })
+            }
           >
             <Text className="text-center text-white font-[Poppins-Bold] text-lg uppercase ">
               Zwróć wybrane książki
