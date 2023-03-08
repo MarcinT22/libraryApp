@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
+import Header from "../../components/Header";
 import { ScrollView } from "react-native-gesture-handler";
 import Animated, {
   useAnimatedStyle,
@@ -10,8 +10,11 @@ import Animated, {
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 
-import { places } from "../data/places";
-import { selectDeliveryPoint, setDeliveryPoint } from "../slices/deliverySlice";
+import { places } from "../../data/places";
+import {
+  selectDeliveryPoint,
+  setDeliveryPoint,
+} from "../../slices/deliverySlice";
 
 const DeliverySelectionScreen = () => {
   const navigation = useNavigation();

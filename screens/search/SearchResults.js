@@ -8,12 +8,12 @@ import {
 import React, { useEffect, useState } from "react";
 import { useRoute } from "@react-navigation/native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import SearchButton from "../components/SearchButton";
+import SearchButton from "../../components/SearchButton";
 import Lottie from "lottie-react-native";
-import { books } from "../data/books";
-import BookCard from "../components/books/BookCard";
-import BookList from "../components/books/BookList";
-import Header from "../components/Header";
+import { books } from "../../data/books";
+import BookCard from "../../components/books/BookCard";
+import BookList from "../../components/books/BookList";
+import Header from "../../components/Header";
 
 const SearchResults = ({ navigation }) => {
   const {
@@ -59,7 +59,7 @@ const SearchResults = ({ navigation }) => {
             <View>
               <View className="justify-center items-center px-5 mt-6 ">
                 <Lottie
-                  source={require("../assets/lottie/90755-no-search-result")}
+                  source={require("../../assets/lottie/90755-no-search-result")}
                   autoPlay
                   className="w-36"
                 />

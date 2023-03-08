@@ -7,11 +7,11 @@ import {
   BackHandler,
 } from "react-native";
 import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
+import Header from "../../components/Header";
 import QRCode from "react-native-qrcode-svg";
-import QRCodeModal from "../components/modals/QRCodeModal";
-import OrderedBookCard from "../components/books/OrderedBookCard";
-import { books } from "../data/books";
+import QRCodeModal from "../../components/modals/QRCodeModal";
+import OrderedBookCard from "../../components/books/OrderedBookCard";
+import { books } from "../../data/books";
 import { useNavigation } from "@react-navigation/native";
 
 const OrderDetailsScreen = ({ route }) => {
@@ -48,7 +48,7 @@ const OrderDetailsScreen = ({ route }) => {
       <View className="flex-row items-center pt-2 pb-7">
         <View className="w-1/5 ">
           <Image
-            source={require("../assets/marker-active.png")}
+            source={require("../../assets/marker-active.png")}
             resizeMode="contain"
             className="w-12 h-16"
           />

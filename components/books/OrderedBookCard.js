@@ -1,7 +1,13 @@
 import { View, Text, Image } from "react-native";
 import React from "react";
 
-const OrderedBookCard = ({ data, status, deliveryDate, returnedDate }) => {
+const OrderedBookCard = ({
+  data,
+  status,
+  deliveryDate,
+  returnedDate,
+  returnDetails,
+}) => {
   return (
     <View className="flex-row items-center">
       <View className="w-1/5">
@@ -15,14 +21,16 @@ const OrderedBookCard = ({ data, status, deliveryDate, returnedDate }) => {
       <View className="w-4/5 ml-3 ">
         <View
           className={`pr-16 flex-1  ${
-            status || deliveryDate || returnedDate
+            status || deliveryDate || returnedDate || returnDetails
               ? "justify-between"
               : "justify-start"
           }`}
         >
           <View
             className={`${
-              !status && !deliveryDate && !returnedDate ? "mt-2" : "mt-0"
+              !status && !deliveryDate && !returnedDate && !returnDetails
+                ? "mt-2"
+                : "mt-0"
             }`}
           >
             <Text
@@ -53,14 +61,17 @@ const OrderedBookCard = ({ data, status, deliveryDate, returnedDate }) => {
           {deliveryDate && (
             <Text className=" text-[#8C8C8C] text-xs font-[Poppins-Bold]">
               Należy oddać do:{" "}
-              <Text className="text-black text-sm text-[#F15E3B]">
-                {deliveryDate}
-              </Text>
+              <Text className="text-sm text-[#F15E3B]">{deliveryDate}</Text>
             </Text>
           )}
           {returnedDate && (
             <Text className=" text-[#8C8C8C] text-xs font-[Poppins-Regular]">
               Zwrócono: {returnedDate}
+            </Text>
+          )}
+          {returnDetails && (
+            <Text className="text-sm text-[#F15E3B] font-[Poppins-Bold] uppercase text-xs">
+              Szczegóły zwrotu
             </Text>
           )}
         </View>

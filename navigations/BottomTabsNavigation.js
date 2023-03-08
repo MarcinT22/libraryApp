@@ -5,15 +5,15 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import HomeScreen from "../screens/HomeScreen";
 
-import BookListScreen from "../screens/BookListScreen";
-import SearchScreen from "../screens/SearchScreen";
+import BookListScreen from "../screens/books/BookListScreen";
+
 import SearchNavigation from "./SearchNavigation";
 import { useNavigation } from "@react-navigation/native";
 import CartScreen from "../screens/CartScreen";
 import { selectCartItems } from "../slices/cartSlice";
 import { useSelector } from "react-redux";
-import AuthUserScreen from "../screens/AuthUserScreen";
-import Account from "../screens/Account";
+
+import Account from "../screens/auth/Account";
 
 const Tab = createBottomTabNavigator();
 
@@ -53,6 +53,7 @@ const BottomTabsNavigation = () => {
         name="HomeScreen"
         component={HomeScreen}
         options={{
+          title: "Home",
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
               name="home-outline"

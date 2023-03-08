@@ -1,7 +1,7 @@
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import React from "react";
-import { books } from "../data/books";
-import OrderedBookCard from "../components/books/OrderedBookCard";
+import { books } from "../../data/books";
+import OrderedBookCard from "../../components/books/OrderedBookCard";
 import { useNavigation } from "@react-navigation/native";
 
 const PendingOrdersScreen = () => {

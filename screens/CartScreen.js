@@ -78,7 +78,7 @@ const CartScreen = ({ navigation }) => {
 
   return (
     <View className="flex-1 bg-[#343434]">
-      <Header title="Koszyk" />
+      <Header title="Koszyk" goBack={false} />
       {!isEmpty ? (
         <>
           <ScrollView

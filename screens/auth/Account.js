@@ -1,6 +1,6 @@
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import React from "react";
-import Header from "../components/Header";
+import Header from "../../components/Header";
 import { useNavigation } from "@react-navigation/native";
 
 const Account = () => {
@@ -29,7 +29,10 @@ const Account = () => {
           </View>
 
           <View className="border-t border-[#F5F5F5] border-b">
-            <TouchableOpacity className=" px-5 py-4">
+            <TouchableOpacity
+              className=" px-5 py-4"
+              onPress={() => navigation.navigate("ChangePasswordScreen")}
+            >
               <Text className="font-[Poppins-Regular] text-[#8C8C8C] text-base">
                 Zmień hasło
               </Text>

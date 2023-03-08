@@ -10,10 +10,10 @@ import React, { useState, useRef, useCallback } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../slices/cartSlice";
-import AddedToCartModal from "../components/modals/AddedToCartModal";
+import { addToCart } from "../../slices/cartSlice";
+import AddedToCartModal from "../../components/modals/AddedToCartModal";
 import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
-import Header from "../components/Header";
+import Header from "../../components/Header";
 
 const BookScreen = () => {
   const {

@@ -1,11 +1,11 @@
 import { View, ScrollView, Text, TouchableOpacity, Image } from "react-native";
 import React, { useState } from "react";
-import Header from "../components/Header";
+import Header from "../../components/Header";
 import { useSelector } from "react-redux";
-import { selectCartItems } from "../slices/cartSlice";
+import { selectCartItems } from "../../slices/cartSlice";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import OrderedBookCard from "../components/books/OrderedBookCard";
-import { selectDeliveryPoint } from "../slices/deliverySlice";
+import OrderedBookCard from "../../components/books/OrderedBookCard";
+import { selectDeliveryPoint } from "../../slices/deliverySlice";
 
 const SummaryScreen = ({ route }) => {
   const navigation = useNavigation();
@@ -42,7 +42,7 @@ const SummaryScreen = ({ route }) => {
             <View className="flex-row items-center pt-2 pb-7">
               <View className="w-1/5 ">
                 <Image
-                  source={require("../assets/marker-active.png")}
+                  source={require("../../assets/marker-active.png")}
                   resizeMode="contain"
                   className="w-12 h-16"
                 />
@@ -84,7 +84,7 @@ const SummaryScreen = ({ route }) => {
           className="py-3 bg-[#F15E3B] rounded-[10px]"
           onPress={() =>
             isReturned
-              ? navigation.navigate("ReturnDetailsScreen")
+              ? navigation.navigate("ReturnDetailsScreen", { goBack: false })
               : navigation.navigate("ThankScreen")
           }
         >

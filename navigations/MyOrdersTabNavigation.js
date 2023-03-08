@@ -1,8 +1,8 @@
 import React from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import PendingOrders from "../screens/PendingOrdersScreen";
-import OrdersToBeReturned from "../screens/OrdersToBeReturnedScreen";
-import OrdersArchive from "../screens/OrdersArchiveScreen";
+import PendingOrders from "../screens/orders/PendingOrdersScreen";
+import OrdersToBeReturned from "../screens/orders/OrdersToBeReturnedScreen";
+import OrdersArchive from "../screens/orders/OrdersArchiveScreen";
 import { Text } from "react-native";
 
 const Tab = createMaterialTopTabNavigator();

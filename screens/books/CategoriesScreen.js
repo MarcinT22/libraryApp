@@ -3,9 +3,9 @@ import React from "react";
 import { useRoute } from "@react-navigation/native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
-import { categories } from "../data/categories";
-import CategoryCard from "../components/categories/CategoryCard";
-import Header from "../components/Header";
+import { categories } from "../../data/categories";
+import CategoryCard from "../../components/categories/CategoryCard";
+import Header from "../../components/Header";
 
 const CategoriesScreen = ({ navigation }) => {
   const {

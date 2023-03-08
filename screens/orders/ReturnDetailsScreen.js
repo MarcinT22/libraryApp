@@ -7,14 +7,14 @@ import {
   BackHandler,
 } from "react-native";
 import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
+import Header from "../../components/Header";
 import QRCode from "react-native-qrcode-svg";
-import QRCodeModal from "../components/modals/QRCodeModal";
-import OrderedBookCard from "../components/books/OrderedBookCard";
-import { books } from "../data/books";
+import QRCodeModal from "../../components/modals/QRCodeModal";
+import OrderedBookCard from "../../components/books/OrderedBookCard";
+import { books } from "../../data/books";
 import { useNavigation } from "@react-navigation/native";
 
-const ReturnDetailsScreen = () => {
+const ReturnDetailsScreen = ({ route }) => {
   const navigation = useNavigation();
 
   const [status, setStatus] = useState(true);
@@ -22,9 +22,13 @@ const ReturnDetailsScreen = () => {
 
   const [valueQR, setValueQR] = useState("349761");
 
+  const [isGoBack, setIsGoBack] = useState(
+    route.params ? route.params.goBack : true
+  );
+
   useEffect(() => {
     function handleBackButton() {
-      navigation.navigate("PendingOrdersScreen");
+      navigation.navigate("OrdersToBeReturnedScreen");
       return true;
     }
 
@@ -58,7 +62,7 @@ const ReturnDetailsScreen = () => {
       <View className="flex-row items-center pt-2 pb-7">
         <View className="w-1/5 ">
           <Image
-            source={require("../assets/marker-active.png")}
+            source={require("../../assets/marker-active.png")}
             resizeMode="contain"
             className="w-12 h-16"
           />
@@ -78,7 +82,7 @@ const ReturnDetailsScreen = () => {
 
   return (
     <View className="flex-1 bg-[#343434] ">
-      <Header title="Szczegóły zwrotu" goBack={false} />
+      <Header title="Szczegóły zwrotu" goBack={isGoBack} />
       <ScrollView
         showsVerticalScrollIndicator={false}
         className="flex-1 bg-white rounded-t-[15px]"

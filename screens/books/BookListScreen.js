@@ -1,12 +1,12 @@
 import { View, Text, ScrollView } from "react-native";
 import React from "react";
-import CategoryList from "../components/categories/CategoryList";
-import { categories } from "../data/categories";
+import CategoryList from "../../components/categories/CategoryList";
+import { categories } from "../../data/categories";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import BookCard from "../components/books/BookCard";
-import { books } from "../data/books";
+import BookCard from "../../components/books/BookCard";
+import { books } from "../../data/books";
 
-import SearchButton from "../components/SearchButton";
+import SearchButton from "../../components/SearchButton";
 const BookListScreen = () => {
   return (
     <View className="flex-1 bg-[#343434] pt-5">

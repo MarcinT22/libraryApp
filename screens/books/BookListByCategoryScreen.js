@@ -9,12 +9,12 @@ import React, { useEffect } from "react";
 import { useRoute } from "@react-navigation/native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import { books } from "../data/books";
-import BookCard from "../components/books/BookCard";
+import { books } from "../../data/books";
+import BookCard from "../../components/books/BookCard";
 
-import SearchButton from "../components/SearchButton";
+import SearchButton from "../../components/SearchButton";
 import Lottie from "lottie-react-native";
-import Header from "../components/Header";
+import Header from "../../components/Header";
 const BookListByCategoryScreen = ({ navigation }) => {
   const {
     params: { data },
@@ -59,7 +59,7 @@ const BookListByCategoryScreen = ({ navigation }) => {
               <View>
                 <View className="justify-center items-center">
                   <Lottie
-                    source={require("../assets/lottie/90755-no-search-result")}
+                    source={require("../../assets/lottie/90755-no-search-result")}
                     autoPlay
                     className="w-40"
                   />

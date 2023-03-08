@@ -1,7 +1,7 @@
 import { View, ScrollView } from "react-native";
 import React from "react";
-import { books } from "../data/books";
-import OrderedBookCard from "../components/books/OrderedBookCard";
+import { books } from "../../data/books";
+import OrderedBookCard from "../../components/books/OrderedBookCard";
 
 const OrdersArchiveScreen = () => {
   return (

@@ -1,13 +1,13 @@
 import { View, Image } from "react-native";
 import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
+import Header from "../../components/Header";
 import MapView from "react-native-maps";
 import { Marker } from "react-native-maps";
-import SelectedMapPointModal from "../components/modals/SelectedMapPointModal";
+import SelectedMapPointModal from "../../components/modals/SelectedMapPointModal";
 
-import { places } from "../data/places";
+import { places } from "../../data/places";
 import { useSelector } from "react-redux";
-import { selectDeliveryPoint } from "../slices/deliverySlice";
+import { selectDeliveryPoint } from "../../slices/deliverySlice";
 
 const MapScreen = () => {
   const selectedPoint = useSelector(selectDeliveryPoint);
@@ -46,8 +46,8 @@ const MapScreen = () => {
               <Image
                 source={
                   point.id == marker.id
-                    ? require("../assets/marker-active.png")
-                    : require("../assets/marker.png")
+                    ? require("../../assets/marker-active.png")
+                    : require("../../assets/marker.png")
                 }
                 resizeMode="contain"
                 className="w-14 h-14"

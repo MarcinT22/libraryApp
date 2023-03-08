@@ -31,10 +31,13 @@ const SearchScreen = ({ navigation }) => {
       const output = JSON.stringify(searchStorage.reverse());
       await AsyncStorage.setItem("searchStorage", output);
 
-      navigation.navigate("SearchNavigation", {
-        screen: "SearchResults",
-        initial: false,
-        params: { textSearched: searchText },
+      navigation.navigate("TabNavigator", {
+        screen: "SearchNavigation",
+        params: {
+          screen: "SearchResultsScreen",
+          initial: false,
+          params: { textSearched: searchText },
+        },
       });
     } catch (e) {
       console.warn(e);
@@ -122,13 +125,13 @@ const SearchScreen = ({ navigation }) => {
                   <View key={index}>
                     <TouchableOpacity
                       className="flex-row items-center py-1.5"
-                      onPress={() =>
+                      onPress={() => {
                         navigation.navigate("SearchNavigation", {
-                          screen: "SearchResults",
+                          screen: "SearchResultsScreen",
                           initial: false,
                           params: { textSearched: item },
-                        })
-                      }
+                        });
+                      }}
                     >
                       <MaterialCommunityIcons
                         name="clock-time-seven-outline"

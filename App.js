@@ -7,21 +7,22 @@ import { useFonts } from "expo-font";
 import { useCallback } from "react";
 
 import BottomTabsNavigation from "./navigations/BottomTabsNavigation";
-import BookScreen from "./screens/BookScreen";
-import CategoriesScreen from "./screens/CategoriesScreen";
-import BookListByCategoryScreen from "./screens/BookListByCategoryScreen";
-import DeliverySelectionScreen from "./screens/DeliverySelectionScreen";
+import BookScreen from "./screens/books/BookScreen";
+import CategoriesScreen from "./screens/books/CategoriesScreen";
+import BookListByCategoryScreen from "./screens/books/BookListByCategoryScreen";
+import DeliverySelectionScreen from "./screens/delivery/DeliverySelectionScreen";
 import { Provider } from "react-redux";
 import store from "./store";
-import MapScreen from "./screens/MapScreen";
-import SummaryScreen from "./screens/SummaryScreen";
+import MapScreen from "./screens/delivery/MapScreen";
+import SummaryScreen from "./screens/orders/SummaryScreen";
 import ThankScreen from "./screens/ThankScreen";
-import OrderDetailsScreen from "./screens/OrderDetailsScreen";
-import LoginScreen from "./screens/LoginScreen";
-import RegisterScreen from "./screens/RegisterScreen";
+import OrderDetailsScreen from "./screens/orders/OrderDetailsScreen";
+import LoginScreen from "./screens/auth/LoginScreen";
+import RegisterScreen from "./screens/auth/RegisterScreen";
 
-import MyOrdersScreen from "./screens/MyOrdersScreen";
-import ReturnDetailsScreen from "./screens/ReturnDetailsScreen";
+import MyOrdersScreen from "./screens/orders/MyOrdersScreen";
+import ReturnDetailsScreen from "./screens/orders/ReturnDetailsScreen";
+import ChangePasswordScreen from "./screens/auth/ChangePasswordScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -97,6 +98,10 @@ export default function App() {
               <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
             </Stack.Group>
             <Stack.Screen name="MyOrdersScreen" component={MyOrdersScreen} />
+            <Stack.Screen
+              name="ChangePasswordScreen"
+              component={ChangePasswordScreen}
+            />
           </Stack.Navigator>
         </Provider>
       </NavigationContainer>

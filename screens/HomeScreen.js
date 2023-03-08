@@ -11,7 +11,7 @@ import BookCard from "../components/books/BookCard";
 import SearchButton from "../components/SearchButton";
 
 const HomeScreen = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
