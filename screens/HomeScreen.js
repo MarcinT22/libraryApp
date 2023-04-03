@@ -1,4 +1,4 @@
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, StatusBar } from "react-native";
 import React, { useEffect, useState } from "react";
 import Loader from "../components/Loader";
 
@@ -9,6 +9,7 @@ import { books } from "../data/books";
 import { useNavigation } from "@react-navigation/native";
 import BookCard from "../components/books/BookCard";
 import SearchButton from "../components/SearchButton";
+import { STATUSBAR_PADDING } from "../constants";
 
 const HomeScreen = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -20,7 +21,7 @@ const HomeScreen = () => {
   }, []);
 
   return (
-    <View className="flex-1 bg-[#343434] pt-5">
+    <View className="flex-1 bg-[#343434]">
       {!isLoading ? (
         <View>
           <ScrollView

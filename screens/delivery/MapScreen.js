@@ -1,7 +1,7 @@
 import { View, Image } from "react-native";
 import React, { useEffect, useState } from "react";
 import Header from "../../components/Header";
-import MapView from "react-native-maps";
+import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import { Marker } from "react-native-maps";
 import SelectedMapPointModal from "../../components/modals/SelectedMapPointModal";
 
@@ -23,6 +23,7 @@ const MapScreen = () => {
       <Header title="Wybierz punkt na mapie" />
       <View className="rounded-t-[15px] overflow-hidden">
         <MapView
+          provider={PROVIDER_GOOGLE}
           className="w-full h-full"
           initialRegion={{
             latitude: 49.8013615,

@@ -9,7 +9,7 @@ import { books } from "../../data/books";
 import SearchButton from "../../components/SearchButton";
 const BookListScreen = () => {
   return (
-    <View className="flex-1 bg-[#343434] pt-5">
+    <View className="flex-1 bg-[#343434]">
       <ScrollView
         stickyHeaderIndices={[0]}
         showsVerticalScrollIndicator={false}

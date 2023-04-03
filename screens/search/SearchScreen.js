@@ -77,8 +77,10 @@ const SearchScreen = ({ navigation }) => {
   }, [navigation]);
 
   return (
-    <View className="flex-1 bg-white pt-5">
-      {isFocused && <StatusBar barStyle="dark-content" />}
+    <View className="flex-1 bg-white">
+      {isFocused && (
+        <StatusBar barStyle="dark-content" backgroundColor="#fff" />
+      )}
       <View className="flex-row items-center justify-between py-3 pl-4 pr-5">
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <MaterialCommunityIcons name="arrow-left" color="#000" size={30} />

@@ -23,6 +23,7 @@ import RegisterScreen from "./screens/auth/RegisterScreen";
 import MyOrdersScreen from "./screens/orders/MyOrdersScreen";
 import ReturnDetailsScreen from "./screens/orders/ReturnDetailsScreen";
 import ChangePasswordScreen from "./screens/auth/ChangePasswordScreen";
+import { STATUSBAR_PADDING } from "./constants";
 
 const Stack = createNativeStackNavigator();
 
@@ -40,7 +41,10 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView className="flex-1 bg-[#343434] ">
+    <SafeAreaView
+      className="flex-1 bg-[#343434] "
+      style={{ paddingTop: STATUSBAR_PADDING }}
+    >
       <StatusBar style="light" backgroundColor="rgba(0,0,0,0)" />
       <NavigationContainer>
         <Provider store={store}>
