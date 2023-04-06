@@ -1,9 +1,9 @@
 import { View, Text, TouchableOpacity, BackHandler } from "react-native";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Lottie from "lottie-react-native";
 import { useNavigation } from "@react-navigation/native";
 
-export default function ThankScreen() {
+export default function ThankScreen({ books }) {
   const navigation = useNavigation();
   const animation = useRef();
 

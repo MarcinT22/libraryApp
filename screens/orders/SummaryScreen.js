@@ -1,11 +1,13 @@
 import { View, ScrollView, Text, TouchableOpacity, Image } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import { useSelector } from "react-redux";
 import { selectCartItems } from "../../slices/cartSlice";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import OrderedBookCard from "../../components/books/OrderedBookCard";
 import { selectDeliveryPoint } from "../../slices/deliverySlice";
+
+import * as Notifications from "expo-notifications";
 
 const SummaryScreen = ({ route }) => {
   const navigation = useNavigation();
@@ -16,6 +18,38 @@ const SummaryScreen = ({ route }) => {
   const [books, setBooks] = useState(
     route.params ? route.params.returnedBooks : items
   );
+
+  const sendNotification = async () => {
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        title: "Dziękujemy za złożenie zamówienia!",
+        body: "Wkrótce Twoje zamówienie wyruszy w drogę do paczkomatu!",
+      },
+      trigger: null,
+      expires: 5000,
+      ios: {
+        lockScreenVisibility: "visible",
+      },
+      android: {
+        // icon: "../../assets/ic_notification.png",
+        // color: "#F15E3B",
+      },
+    });
+  };
+
+  const showThanksScreen = () => {
+    sendNotification();
+    navigation.navigate("ThankScreen");
+  };
+
+  useEffect(() => {
+    const subscription = Notifications.addNotificationResponseReceivedListener(
+      () => {
+        navigation.navigate("OrderDetailsScreen", { goBack: false });
+      }
+    );
+    return () => subscription.remove();
+  }, []);
 
   return (
     <View className="flex-1 bg-[#343434] ">
@@ -85,7 +119,7 @@ const SummaryScreen = ({ route }) => {
           onPress={() =>
             isReturned
               ? navigation.navigate("ReturnDetailsScreen", { goBack: false })
-              : navigation.navigate("ThankScreen")
+              : showThanksScreen()
           }
         >
           <Text className="text-center text-white font-[Poppins-Bold] text-lg uppercase ">

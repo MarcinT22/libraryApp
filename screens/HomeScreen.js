@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, StatusBar } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import React, { useEffect, useState } from "react";
 import Loader from "../components/Loader";
 
@@ -6,19 +6,17 @@ import CategoryList from "../components/categories/CategoryList";
 import { categories } from "../data/categories";
 import { books } from "../data/books";
 
-import { useNavigation } from "@react-navigation/native";
 import BookCard from "../components/books/BookCard";
 import SearchButton from "../components/SearchButton";
-import { STATUSBAR_PADDING } from "../constants";
 
 const HomeScreen = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 2000);
+  // }, []);
 
   return (
     <View className="flex-1 bg-[#343434]">
