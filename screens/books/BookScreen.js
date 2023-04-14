@@ -56,7 +56,7 @@ const BookScreen = () => {
               <Image
                 source={{ uri: data.imgUrl }}
                 className="w-40 h-60 rounded-[15px]"
-                resizeMode="contain"
+                resizeMode="cover"
               />
             </View>
             <View className="ml-3  w-1/2">

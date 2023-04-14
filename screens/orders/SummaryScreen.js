@@ -1,5 +1,5 @@
 import { View, ScrollView, Text, TouchableOpacity, Image } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Header from "../../components/Header";
 import { useSelector } from "react-redux";
 import { selectCartItems } from "../../slices/cartSlice";
@@ -11,6 +11,7 @@ import * as Notifications from "expo-notifications";
 
 const SummaryScreen = ({ route }) => {
   const navigation = useNavigation();
+  const navigationRef = useRef();
   const items = useSelector(selectCartItems);
   const deliveryPoint = useSelector(selectDeliveryPoint);
 
@@ -30,10 +31,6 @@ const SummaryScreen = ({ route }) => {
       ios: {
         lockScreenVisibility: "visible",
       },
-      android: {
-        // icon: "../../assets/ic_notification.png",
-        // color: "#F15E3B",
-      },
     });
   };
 
@@ -41,15 +38,6 @@ const SummaryScreen = ({ route }) => {
     sendNotification();
     navigation.navigate("ThankScreen");
   };
-
-  useEffect(() => {
-    const subscription = Notifications.addNotificationResponseReceivedListener(
-      () => {
-        navigation.navigate("OrderDetailsScreen", { goBack: false });
-      }
-    );
-    return () => subscription.remove();
-  }, []);
 
   return (
     <View className="flex-1 bg-[#343434] ">
@@ -74,14 +62,14 @@ const SummaryScreen = ({ route }) => {
           </Text>
           {deliveryPoint.length != 0 ? (
             <View className="flex-row items-center pt-2 pb-7">
-              <View className="w-1/5 ">
+              <View className="w-12 ">
                 <Image
                   source={require("../../assets/marker-active.png")}
                   resizeMode="contain"
                   className="w-12 h-16"
                 />
               </View>
-              <View className="w-4/5">
+              <View className="w-4/5 ml-3">
                 <Text className="font-[Poppins-SemiBold] text-base">
                   {deliveryPoint.title}
                 </Text>

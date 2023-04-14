@@ -9,8 +9,12 @@ import { books } from "../data/books";
 import BookCard from "../components/books/BookCard";
 import SearchButton from "../components/SearchButton";
 
+import { useNavigation } from "@react-navigation/native";
+
 const HomeScreen = () => {
   const [isLoading, setIsLoading] = useState(false);
+
+  const [screen, setScreen] = useState(null);
 
   // useEffect(() => {
   //   setTimeout(() => {

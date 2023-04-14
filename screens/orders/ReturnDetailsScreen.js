@@ -60,14 +60,14 @@ const ReturnDetailsScreen = ({ route }) => {
         Punkt zwrotu:
       </Text>
       <View className="flex-row items-center pt-2 pb-7">
-        <View className="w-1/5 ">
+        <View className="w-12 ">
           <Image
             source={require("../../assets/marker-active.png")}
             resizeMode="contain"
             className="w-12 h-16"
           />
         </View>
-        <View className="w-4/5">
+        <View className="w-4/5 ml-3">
           <Text className="font-[Poppins-SemiBold] text-base">
             BM Skoczów - PO1
           </Text>
