@@ -1,4 +1,4 @@
-import { View, Image } from "react-native";
+import { View, Image, Text } from "react-native";
 import React, { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
@@ -8,22 +8,51 @@ import SelectedMapPointModal from "../../components/modals/SelectedMapPointModal
 import { places } from "../../data/places";
 import { useSelector } from "react-redux";
 import { selectDeliveryPoint } from "../../slices/deliverySlice";
+import * as Location from "expo-location";
+import { current } from "@reduxjs/toolkit";
 
 const MapScreen = () => {
+  const [locationPermission, setLocationPermission] = useState(null);
+  const [currentLocation, setCurrentLocation] = useState(null);
   const selectedPoint = useSelector(selectDeliveryPoint);
-
   const [point, setPoint] = useState(selectedPoint);
 
-  function selectPoint(point) {
+  const handleLocationPermission = async () => {
+    const { status } = await Location.requestForegroundPermissionsAsync();
+    setLocationPermission(status);
+    if (status !== "granted") {
+      return;
+    }
+    let location = (await Location.getCurrentPositionAsync({})).coords;
+
+    return location;
+  };
+
+  useEffect(() => {
+    handleLocationPermission().then((location) => {
+      setCurrentLocation(JSON.stringify(location));
+    });
+
+    console.log(currentLocation);
+  }, []);
+
+  const selectPoint = (point) => {
     setPoint(point);
-  }
+  };
 
   return (
     <View className="flex-1 ">
       <Header title="Wybierz punkt na mapie" />
+      <Text className="bg-white p-5">
+        {locationPermission === "granted"
+          ? "Lokalizacja udostepniona"
+          : "Lokalizacnie nieudostepniona!"}
+      </Text>
       <View className="rounded-t-[15px] overflow-hidden">
         <MapView
           provider={PROVIDER_GOOGLE}
+          showsUserLocation
+          followsUserLocation
           className="w-full h-full"
           initialRegion={{
             latitude: 49.8013615,
