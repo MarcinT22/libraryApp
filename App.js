@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { Platform, SafeAreaView } from "react-native";
+import { Platform, SafeAreaView, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -52,11 +52,10 @@ async function registerForPushNotificationsAsync() {
     return;
   }
   token = (await Notifications.getExpoPushTokenAsync()).data;
-  console.log(token);
 
   if (Platform.OS === "android") {
-    Notifications.setNotificationChannelAsync("default", {
-      name: "default",
+    Notifications.setNotificationChannelAsync("Miscellaneous", {
+      name: "Powiadomienia",
       importance: Notifications.AndroidImportance.MAX,
       vibrationPattern: [0, 250, 250, 250],
     });
