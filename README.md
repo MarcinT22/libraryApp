@@ -27,6 +27,6 @@ In this version all data is taken from a JSON file. In the future, data will be 
 7. Expo location (in the future, the user's location will be retrieved and displayed on a map)
 
 ## Graphic design
-The graphic design was created in Figma and is available on https://www.figma.com/file/w0YgbmubFLsJSnrdruaC7n/LIbrary-App?node-id=0%3A1&t=87NNLhkIF2vFrfef-1
+The graphic design was created in Figma and is available by clicking on this link https://www.figma.com/file/w0YgbmubFLsJSnrdruaC7n/LIbrary-App?node-id=0%3A1&t=87NNLhkIF2vFrfef-1
 
 ## Mobile App
