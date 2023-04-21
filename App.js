@@ -29,7 +29,6 @@ import { useEffect } from "react";
 
 import * as Notifications from "expo-notifications";
 import { useState } from "react";
-import { useRef } from "react";
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -68,30 +67,11 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [expoPushToken, setExpoPushToken] = useState("");
-  const notificationListener = useRef();
-  const responseListener = useRef();
 
   useEffect(() => {
     registerForPushNotificationsAsync().then((token) =>
       setExpoPushToken(token)
     );
-
-    notificationListener.current =
-      Notifications.addNotificationReceivedListener((notification) => {
-        // console.log(notification.request.content.data.screen);
-      });
-
-    responseListener.current =
-      Notifications.addNotificationResponseReceivedListener((response) => {
-        // console.log(response.notification.request.content.data.screen);
-      });
-
-    return () => {
-      Notifications.removeNotificationSubscription(
-        notificationListener.current
-      );
-      Notifications.removeNotificationSubscription(responseListener.current);
-    };
   }, []);
 
   const [fontsLoaded] = useFonts({
