@@ -23,7 +23,7 @@ const BottomTabsNavigation = () => {
   const navigation = useNavigation();
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="HomeScreen"
       backBehavior="history"
       screenOptions={{
         unmountOnBlur: true,

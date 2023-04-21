@@ -31,7 +31,7 @@ export const categories = [
   },
   {
     id: 6,
-    imgUrl: "https://ecsmedia.pl/c/krzyzacy-w-iext123686555.jpg",
+    imgUrl: "https://ecsmedia.pl/c/krew-i-popiol-tom-1-w-iext115531667.jpg",
     title: "Powieść historyczna",
   },
   {
