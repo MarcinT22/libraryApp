@@ -12,6 +12,5 @@ web-build/
 app.json
 google-services.json
 
-
 # macOS
 .DS_Store
