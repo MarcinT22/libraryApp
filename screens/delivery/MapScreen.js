@@ -32,8 +32,6 @@ const MapScreen = () => {
     handleLocationPermission().then((location) => {
       setCurrentLocation(JSON.stringify(location));
     });
-
-    console.log(currentLocation);
   }, []);
 
   const selectPoint = (point) => {
@@ -43,11 +41,6 @@ const MapScreen = () => {
   return (
     <View className="flex-1 ">
       <Header title="Wybierz punkt na mapie" />
-      <Text className="bg-white p-5">
-        {locationPermission === "granted"
-          ? "Lokalizacja udostepniona"
-          : "Lokalizacnie nieudostepniona!"}
-      </Text>
       <View className="rounded-t-[15px] overflow-hidden">
         <MapView
           provider={PROVIDER_GOOGLE}

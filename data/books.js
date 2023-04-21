@@ -2,7 +2,7 @@ export const books = [
   {
     id: 1,
     imgUrl:
-      "https://ecsmedia.pl/c/harry-potter-i-zakon-feniksa-tom-5-w-iext123071903.jpg",
+      "https://s.lubimyczytac.pl/upload/books/308000/308635/532902-352x500.jpg",
     title: "Harry Potter i Zakon Feniksa",
     author: "J.K. Rowling",
     category: "Fantastyka",
@@ -11,7 +11,8 @@ export const books = [
   },
   {
     id: 2,
-    imgUrl: "https://ecsmedia.pl/c/psychologia-milosci-w-iext123522977.jpg",
+    imgUrl:
+      "https://th.bing.com/th/id/OIP.s21cX4AdsmpLWEDVjCmJbQAAAA?w=204&h=289&c=7&r=0&o=5&pid=1.7",
     title: "Psychologia Miłości",
     author: "Bogdan Wojciszke",
     category: "Psychologia",
@@ -29,7 +30,8 @@ export const books = [
   },
   {
     id: 4,
-    imgUrl: "https://ecsmedia.pl/c/afryka-kazika-w-iext117215669.jpg",
+    imgUrl:
+      "https://th.bing.com/th/id/OIP.8djd-NsHeAzNUtNpmNywewAAAA?w=133&h=190&c=7&r=0&o=5&pid=1.7",
     title: "Afryka Kazika",
     author: "Łukasz Wierzbicki",
     category: "Dla dzieci",
@@ -77,7 +79,8 @@ export const books = [
   },
   {
     id: 9,
-    imgUrl: "https://ecsmedia.pl/c/hobbit-w-iext122055294.jpg",
+    imgUrl:
+      "https://th.bing.com/th/id/OIP.snlGK2VQ-DWAcM3WmSy4VwAAAA?w=198&h=314&c=7&r=0&o=5&pid=1.7",
     title: "Hobbit",
     author: "J.R.R. Tolkien",
     category: "Fantastyka",
@@ -86,7 +89,8 @@ export const books = [
   },
   {
     id: 10,
-    imgUrl: "https://ecsmedia.pl/c/zaczarowana-zagroda-w-iext123605891.jpg",
+    imgUrl:
+      "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTkyb2pBam1px9GaY1sKc6AsNQwS9KMNHeRZu7uJXSdTxJKqogT",
     title: "Zaczarowana zagroda",
     author: "Centkiewicz Alina , Centkiewicz Czesław",
     category: "Dla dzieci",
