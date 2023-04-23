@@ -1,7 +1,7 @@
 # LibraryApp
 LibraryApp is a mobile application developed in React Native using Expo, which allows users to borrow books from the library. 
-The app features include browsing the list of books, sorting by category, adding books to the cart, selecting a delivery point on the map, and push notifications. 
-With these features, users can easily browse available books, select their preferred book, place an order, and then pick it up at their chosen location. 
+The app features include browsing the list of books, sorting by category, adding books to the cart, selecting a delivery point on the map and push notifications. 
+With these features, users can easily browse available books, select their preferred book, place an order and then pick it up at their chosen location. 
 In this version all data is taken from a JSON file. In the future, data will be taken from an API.
 
 ## Features
