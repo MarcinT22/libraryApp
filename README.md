@@ -19,14 +19,15 @@ In this version all data is taken from a JSON file. In the future, data will be 
 
 ## Technologies and tools used in the project
 1. React Native (Expo)
-2. NativeWind
+2. NativeWind/Tailwind CSS
 3. Redux
 4. Lottie
 5. Expo notifications
 6. React Native Maps
-7. Expo location (in the future, the user's location will be retrieved and displayed on a map)
+7. Expo location (in the future, the user's location will be taken and displayed on a map)
 
 ## Graphic design
 The graphic design was created in Figma and is available by clicking on this link https://www.figma.com/file/w0YgbmubFLsJSnrdruaC7n/LIbrary-App?node-id=0%3A1&t=87NNLhkIF2vFrfef-1
 
 ## Mobile App
+Here you can see how the application works: https://www.youtube.com/watch?v=dJVkUWX_dIg
