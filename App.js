@@ -25,6 +25,10 @@ import ReturnDetailsScreen from "./screens/orders/ReturnDetailsScreen";
 import ChangePasswordScreen from "./screens/auth/ChangePasswordScreen";
 import { STATUSBAR_PADDING } from "./constants";
 
+import PoppinsRegular from "./assets/fonts/Poppins-Regular.ttf";
+import PoppinsBold from "./assets/fonts/Poppins-Bold.ttf";
+import PoppinsSemiBold from "./assets/fonts/Poppins-SemiBold.ttf";
+
 import { useEffect } from "react";
 
 import * as Notifications from "expo-notifications";
@@ -75,12 +79,12 @@ export default function App() {
   }, []);
 
   const [fontsLoaded] = useFonts({
-    "Poppins-Regular": require("./assets/fonts/Poppins-Regular.ttf"),
-    "Poppins-SemiBold": require("./assets/fonts/Poppins-SemiBold.ttf"),
-    "Poppins-Bold": require("./assets/fonts/Poppins-Bold.ttf"),
+    "Poppins-Regular": PoppinsRegular,
+    "Poppins-Bold": PoppinsBold,
+    "Poppins-SemiBold": PoppinsSemiBold,
   });
 
-  const onLayoutRootView = useCallback(async () => {}, [fontsLoaded]);
+
 
   if (!fontsLoaded) {
     return null;
